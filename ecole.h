@@ -17,4 +17,4 @@ typedef struct Ecole
 //          ******  Utilisation d'un simple tableau ou bien d'une table de hachage ?    *******
 } Ecole_t;
 
-#endif
+#endif //ECOLE_H
