@@ -17,4 +17,7 @@ typedef struct Ecole
 //          ******  Utilisation d'un simple tableau ou bien d'une table de hachage ?    *******
 } Ecole_t;
 
+void SaisirEcole(Ecole_t *E);
+void AfficherEcole(Ecole_t E);
+
 #endif //ECOLE_H
