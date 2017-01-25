@@ -1,0 +1,53 @@
+Formalisation du besoin
+
+Description du projet
+
+L’éducation nationale a lancé un appel d’offre pour acquérir un logiciel de gestion d’école élémentaire. Ce logiciel doit permettre à un directeur/trice d’école ainsi qu’aux enseignants de gérer les informations sur les élèves, leurs parents, les classes et les enseignants.
+
+Description des fonctionnalités
+
+- Menu
+	- Gestion des élèves
+		- Saisie d'un élève
+		- Modification d'un élève
+		- Afficher les élèves
+		- Affecter un élève
+		- Exclure un élève
+		- Supprimer un élève
+		- Retour menu principal
+
+	- Gestion des classes
+		- Saisie des informations d'une classe
+		- Modification des informations d'une classe
+		- Afficher une classe
+		- Supprimer une classe
+		- Retour menu principal
+
+	- Gestion de l'école
+		- Saisie des informations de l'école
+		- Modifier les informations de l'école
+		- Afficher l'école
+		- Retour au menu principal
+		- Quitter
+	
+	- Quitter
+
+Informations utiles
+
+- Nombre d’utilisateur : directeur/trice d’école, enseignants. Ces utilisateurs sont localisés dans l’école concernée. Ils seront définis comme administrateurs pour toutes les fonctionnalités du système.
+
+- Volumétrie : Programme prévu pour une école de maximum 500 élèves, soit 20 classes environ et une vingtaine d’enseignants.
+
+- Sauvegarde : Les sauvegardes seront prévues quotidiennement sur le serveur.
+
+- Indisponibilité : Les besoins de disponibilité sont importants. Dans le cas d’une panne majeure, un support technique est mis à disposition pour régler le problème dans journée.
+
+- Sécurité : Les données contenues dans ce logiciel sont des données d’ordre de la vie privée et nécessitent une protection. Seuls les administrateurs pourront y avoir accès à l’aide d’un mot de passe sécurisé.
+
+Moyens mis en oeuvre
+
+- Budget maximum accordé au projet: 3 personnes par jour
+
+- Formations : les utilisateurs du programme auront une journée de formation pour la prise en main du logiciel.
+
+- Ressources humaines : pour ce projet, 2 développeurs seront détachés ainsi qu’un formateur pour la prise en main du logiciel. Une personne sera à disposition pour tout problème technique.
