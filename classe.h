@@ -21,3 +21,5 @@ typedef struct Classe
 
 void SaisirClasse(Classe_t *C);
 void AfficherClasse(Classe_t C);
+
+#endif
