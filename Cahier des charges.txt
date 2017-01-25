@@ -51,3 +51,11 @@ Moyens mis en oeuvre
 - Formations : les utilisateurs du programme auront une journée de formation pour la prise en main du logiciel.
 
 - Ressources humaines : pour ce projet, 2 développeurs seront détachés ainsi qu’un formateur pour la prise en main du logiciel. Une personne sera à disposition pour tout problème technique.
+
+Storyboard
+
+(on insèrera ici le storyboard)
+
+Diagrammes de cas d'utilisation
+
+(on insèrera ici les diagrammes UML)
