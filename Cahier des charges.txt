@@ -59,3 +59,8 @@ Storyboard
 Diagrammes de cas d'utilisation
 
 (on insèrera ici les diagrammes UML)
+
+Gestion du temps
+
+Notre équipe dispose de cinq jours pour conceptualiser et réaliser le logiciel.
+(on insèrera ici le diagramme de GANTT)
