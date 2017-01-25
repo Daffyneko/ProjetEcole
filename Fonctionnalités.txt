@@ -1,0 +1,15 @@
+- Menu
+	- Gestion des élèves
+		- Saisie d'un élève
+		- Modification d'un élève
+		- Affecter un élève
+		- Exclure un élève
+		- Supprimer un élève
+
+	- Gestion des classes
+		- Saisie des informations d'une classe
+		- Modification des informations d'une classe
+		- Supprimer une classe
+
+	- Gestion de l'école
+		- Saisie des informations de l'école
