@@ -11,8 +11,6 @@ Description des fonctionnalités
 		- Saisie d'un élève
 		- Modification d'un élève
 		- Afficher les élèves
-		- Affecter un élève
-		- Exclure un élève
 		- Supprimer un élève
 		- Retour menu principal
 
@@ -28,7 +26,6 @@ Description des fonctionnalités
 		- Modifier les informations de l'école
 		- Afficher l'école
 		- Retour au menu principal
-		- Quitter
 	
 	- Quitter
 
