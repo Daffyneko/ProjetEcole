@@ -46,7 +46,7 @@ typedef struct Classe
 	char nomEnseignant[MAX]; // Nom du prof s'occupant de la classe
 	int numClasse; // Numero de la classe dans le cas ou il y aurait plusieurs CP ou autres classes...
 	int nbEleveClasse; // Nombre d'élève par classe
-	struct Eleve eleveClasse; // Appel de la structure Eleve pour saisir un élève dans la classe
+	struct Eleve *premier; // Appel de la structure Eleve pour saisir un élève dans la classe
 
 	struct Classe *suivant; // Utilisation de liste chainée pour avoir une liste de classe
 } Classe_t;
@@ -59,7 +59,7 @@ typedef struct Ecole
 	int nbEleveNiveau[5]; // Nombre d'élève par niveau. Chaque case représente un niveau
 	int nbClasse; // Nombre de classe totale dans l'école
 
-	struct Classe classe[25]; // Appel de la fonction classe pour saisir une classe dans l'école
+	struct Classe *classe[5]; // Appel de la fonction classe pour saisir une classe dans l'école
 //          ******  Utilisation d'un simple tableau ou bien d'une table de hachage ?    *******
 } Ecole_t;
 
