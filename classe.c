@@ -32,7 +32,9 @@ void SaisirClasse(Classe_t *C)
     }
 };
 
-
+void AffecterEleve(Eleve_t E, Classe_t *C){
+    strcpy(C->TabEleve[C->nbEleveClasse+1].nom,E.nom);
+}
 
 
 
