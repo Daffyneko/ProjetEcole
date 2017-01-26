@@ -51,7 +51,7 @@ typedef struct Classe
 /*	struct Eleve *premier; // Appel de la structure Eleve pour saisir un élève dans la classe
 	struct Classe *suivant; // Utilisation de liste chainée pour avoir une liste de classe */
 	
-	struct Eleve TabEleve[MAxELEVE];
+	struct Eleve TabEleve[MAXELEVE];
 } Classe_t;
 
 typedef struct Ecole
