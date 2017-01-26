@@ -22,7 +22,10 @@ int main(){
         case 1 ://Ecrivez ici les fonctions que vous voulez tester
                 //Cela nous permet de voir aussi comment les autres utilisent leurs fonctions
                 //SaisirEleve(&E);
-                //AfficherEleve(E);
+                //AfficherEleve(E); 
+                //SaisirClasse(&C);
+                // AfficherClasse (C);
+                
                 break;
         case 2 :
             printf("\nGestion des élèves.");
