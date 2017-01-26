@@ -2,9 +2,11 @@
 #include <stdlib.h>
 
 #include "ecole.h"
+#include "menu.h"
 
 int main(){
-    //Eleve_t E;
+    Eleve_t E;
+    Ecole_t MonEcole;
     int choix=-1;
     printf("\n----------------------Bienvenue à l'école LDNR----------------------\n");
     do{
@@ -20,21 +22,17 @@ int main(){
         default : return -1;
         case 0 : break;
         case 1 ://Ecrivez ici les fonctions que vous voulez tester
-                //Cela nous permet de voir aussi comment les autres utilisent leurs fonctions
-                //SaisirEleve(&E);
-                //AfficherEleve(E); 
-                //SaisirClasse(&C);
-                // AfficherClasse (C);
-                
+                SaisirEleve(&E);
+                AfficherEleve(E);
                 break;
         case 2 :
-            printf("\nGestion des élèves.");
-            break;
+                MenuEleve(MonEcole);
+                break;
         case 3 :
-            printf("\nGestion des classes.");
+            MenuClasse(MonEcole);
             break;
         case 4 :
-            printf("\nGestion de l'école.");
+            MenuEcole(MonEcole);
         }
     }while(choix!=0);
 
