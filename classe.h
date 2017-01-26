@@ -22,7 +22,12 @@ void SaisirClasse (Classe_t *C);
 
 void AfficherClasse(Classe_t C);
 
+void ModifierClasse(Classe_t *C);
+
 void AffecterEleve(Eleve_t E, Classe_t *C);
+
+/*Ecrit un tableau de classe dans un fichier*/
+void Ecrire_Fichier_Classe(const char *FichierEcole, Classe_t *TabClasse, int nb);
 
 /*LISTE CHAINEES*/
 
