@@ -8,7 +8,7 @@ void AfficherClasse (Classe_t C)
 {int i;
 printf("Classe niveau:%s , numero:%d, nom de l'enseignant: %s", C.niveau, C.numClasse, C.nomEnseignant);
 for (i=0; i<25; i++)
-AfficherEleve(TabEleve[i]);
+AfficherEleve(C.TabEleve[i]);
 
 };
 
@@ -19,62 +19,45 @@ void SaisirClasse(Classe_t *C)
     scanf("%s", C->niveau);
 
     printf("Nom de l'enseignant/e :\n");
-    fgets(C->nomEnseignant, MAX, stdin); // on récupère la ligne de caractère
+    fgets(C->nomEnseignant, MAX, stdin); // on rÃ©cupÃ¨re la ligne de caractÃ¨re
     C->nomEnseignant[strlen(C->nomEnseignant)-1] = '\0'; // on supprime le '\n')
 
-    printf("Numéro de la classe : \n"); // saisie du numéro de la classe
+    printf("NumÃ©ro de la classe : \n"); // saisie du numÃ©ro de la classe
     scanf("%d", &C->numClasse);
     getchar();
 
-    for(i=0; i <C->nbEleveClasse; i++) // saisie de chacun des élèves de la classe
+    for(i=0; i <C->nbEleveClasse; i++) // saisie de chacun des Ã©lÃ¨ves de la classe
     {
-        SaisirEleve(&C->TabEleve[i]); // utilisation de la fonction de saisie des élèves
+        SaisirEleve(&C->TabEleve[i]); // utilisation de la fonction de saisie des Ã©lÃ¨ves
     }
-}
-
-
-
 };
+
+
+
+
 
 /* LISTES CHAINEES-----------------------*********************
 
 void SaisirClasse{Classe_t *C);
 
 
-/*Affiche la classe en parcourant la structure récursive classe. L'étoile n'est pas un pointeur
-mais le début de la première cellule
+/*Affiche la classe en parcourant la structure rÃ©cursive classe. L'Ã©toile n'est pas un pointeur
+mais le dÃ©but de la premiÃ¨re cellule
 
 void AfficherClasse(Classe_t *tete);
 {   //int i
    Classe_t *courant;
 
-    // 1 : se positionner en tête. Equivalent de i = 0.
+    // 1 : se positionner en tÃªte. Equivalent de i = 0.
     eleve = tete;
 
-    // i<taille , tant qu'on n'arrive pas à la fin de la liste (plus d'éléments)
+    // i<taille , tant qu'on n'arrive pas Ã  la fin de la liste (plus d'Ã©lÃ©ments)
     while(eleve!= NULL)
     {
-        //2 : affichage : traitement : afficher les données de l'adhérent
+        //2 : affichage : traitement : afficher les donnÃ©es de l'adhÃ©rent
         AfficherClasse(courant->eleve);
 
         //3 : aller au suivant. Equivalent de i = i +1
         eleve = eleve->suivant;
-    }
-}
-*/
-/*Saisie les données de l'adhérent*/
-void Saisir_Adherent(Adherent_t *adherent)
-{
-    int i;
-    printf("Votre nom : ");     //saisie du nom
-    scanf("%s", adherent->nom);
-
-    printf("Combient de livre : "); // saisie du nombre de livre
-    scanf("%d", &adherent->nb_livres);
-    getchar();
-
-    for(i=0; i <adherent->nb_livres; i++) // saisie de chacun des livres
-    {
-        Saisir_Livre(&adherent->livre[i]);
     }
 }
