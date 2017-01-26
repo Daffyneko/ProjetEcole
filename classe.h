@@ -22,7 +22,7 @@ void SaisirClasse (Classe_t *C);
 
 void AfficherClasse(Classe_t C);
 
-
+void AffecterEleve(Eleve_t E, Classe_t *C);
 
 /*LISTE CHAINEES*/
 
