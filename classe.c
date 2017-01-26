@@ -58,7 +58,8 @@ void Ecrire_Fichier_Classe(const char *FichierEcole, Classe_t *TabClasse, int nb
         for(j=0; j<TabClasse[i].nbEleveClasse; j++) // pour chaque classe on parcourt ses élèves
         {
           // écriture du prénom, nom, sexe et date de naissance
-            fprintf(ptr_fichier, "%s ; %s ; %c ; %d/%d/%d", TabClasse[i].TabEleve[j].nom,TabClasse[i].TabEleve[j].prenom, TabClasse[i].TabEleve[j].sexe, TabClasse[i].TabEleve[j].dateNaissance.tm_mday,TabClasse[i].TabEleve[j].dateNaissance.tm_mon, TabClasse[i].TabEleve[j].dateNaissance.tm_year);
+            fprintf(ptr_fichier, "%s ; %s ; %c ; %d/%d/%d", TabClasse[i].TabEleve[j].nom,TabClasse[i].TabEleve[j].prenom, TabClasse[i].TabEleve[j].sexe, 
+            TabClasse[i].TabEleve[j].dateNaissance.tm_mday,TabClasse[i].TabEleve[j].dateNaissance.tm_mon, TabClasse[i].TabEleve[j].dateNaissance.tm_year);
 
 
         }
