@@ -37,6 +37,44 @@ void AffecterEleve(Eleve_t E, Classe_t *C){
     strcpy(C->TabEleve[C->nbEleveClasse+1].nom,E.nom);
 }
 
+void ModifierClasse(Classe_t *C)
+{
+    int choix=-1;
+
+    printf("Veuillez saisir le champ à modifier : \n1 - Niveau de la classe\n2 - Nom de l'enseignant(e)\n3 - Nombre d'élèves\n 4 - Annuler\n");
+    scanf("%d",&choix);
+    switch(choix)
+    {
+        default : break;
+        case 1 :
+            do {printf("\nVeuillez entrer le niveau de la classe : ");// entrer le nouveau niveau pour remplacer l'ancien
+            scanf("%d", & C->niveau);
+                }
+            while(C->niveau!='CP' && C->niveau!='CE1' && C->niveau!='CE2' && C->niveau!='CM1' && C->niveau!='CM2'); // redemande tant que le niveau ne correspond pas
+            printf("\n***Modification effectuée***\n");
+            break;
+
+        case 2 :
+            printf("\nVeuillez entrer le nom de l'enseignant(e) : \n");// entrer le nouveau nom pour remplacer l'ancien
+
+            fgets(C->nomEnseignant, MAX, stdin); // on récupère la ligne de caractère
+            C->nomEnseignant[strlen(C->nomEnseignant)-1] = '\0'; // on supprime le '\n')
+
+            printf("\n***Modification effectuée***\n");
+            break;
+
+        case 3 :
+            printf("\nVeuillez entrer le nombre d'élèves souhaité : ");
+            scanf("%d", &C->nbEleveClasse);
+            printf("\n***Modification effectuée***\n");
+            break;
+
+        case 4 :
+            printf("\n***Modification annulée***\n");
+            break;
+    }
+}
+
 /*Ecrit un tableau de classe dans un fichier*/
 void Ecrire_Fichier_Classe(const char *FichierEcole, Classe_t *TabClasse, int nb)
 { int i,j;   // variables de boucle
