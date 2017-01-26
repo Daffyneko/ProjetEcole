@@ -1,25 +1,38 @@
 #include <stdio.h>
-#include <time.h>
+#include <stdlib.h>
+#include "classe.h"
+
+
+//          ****        ecole.h        ****
+
 
 #ifndef ECOLE_H
 #define ECOLE_H
 
-#include "classe.h"
-# define MAX 30
-# define CHAINE 150
-# define MAXELEVE 25
+#define MAX 30
 
-typedef struct Ecole{
-	char nomEcole[MAX]; // Nom de l'école
-	char nomDirecteur[MAX]; // Nom du directeur de lécole
-	int nbEleveTotal; // Nombre total d'élève dans l'école
-	int nbEleveNiveau[5]; // Nombre d'élève par niveau. Chaque case représente un niveau
-	int nbClasse; // Nombre de classe totale dans l'école
-
-	struct Classe TabClasse[4];
-
-//	struct Classe *classe[5]; // Appel de la fonction classe pour saisir une classe dans l'école
-//          ******  Utilisation d'un simple tableau ou bien d'une table de hachage ?    *******
+typedef struct Ecole
+{
+    char nomEcole[MAX];
+    char nomDirecteur[MAX];
+    int nbEleveTotal;
+    int nbEleveNiveau[5];
+    int nbClasse;
+    struct Classe TabClasse[5];
 } Ecole_t;
 
-#endif //ECOLE_H
+
+void AfficherEcole (struct Ecole); // Affiche les parmètres de l'école
+
+void SaisirEcole (struct Ecole *); // Saisi les paramètres de l'école
+
+void AfficherParametreClasse (struct Ecole); // Affiche les paramètres de toutes les classes (Niveau, numéro, instit... )
+
+void AfficherEleveTotal (struct Ecole); // Affiche TOUT les élèves de l'école
+
+void AfficherEleveClasse(struct Ecole); // N'affiche les élèves que d'une seule classe
+
+int Recherche(char *A, char *B); // Fonction de recherche. Prends en paramètres deux chaines de caractères
+
+
+#endif // ECOLE_H
