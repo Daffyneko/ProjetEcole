@@ -4,6 +4,7 @@
 
 # define MAX 30
 # define CHAINE 150
+# define MAXELEVE 25
 
 
 
@@ -37,7 +38,8 @@ typedef struct Eleve
 //	struct Parent renseignement; // Renseignement sur les parents numero nom et adresse
 //	struct Bulletin note; // Bulletins de notes. notes matières retard abscences...
 
-	struct Eleve *suivant; // Utilisation de liste chainée pour avoir une liste d'élève
+//	struct Eleve *suivant; // Utilisation de liste chainée pour avoir une liste d'élève
+	
 } Eleve_t;
 
 typedef struct Classe
@@ -46,9 +48,10 @@ typedef struct Classe
 	char nomEnseignant[MAX]; // Nom du prof s'occupant de la classe
 	int numClasse; // Numero de la classe dans le cas ou il y aurait plusieurs CP ou autres classes...
 	int nbEleveClasse; // Nombre d'élève par classe
-	struct Eleve *premier; // Appel de la structure Eleve pour saisir un élève dans la classe
-
-	struct Classe *suivant; // Utilisation de liste chainée pour avoir une liste de classe
+/*	struct Eleve *premier; // Appel de la structure Eleve pour saisir un élève dans la classe
+	struct Classe *suivant; // Utilisation de liste chainée pour avoir une liste de classe */
+	
+	struct Eleve TabEleve[MAxELEVE];
 } Classe_t;
 
 typedef struct Ecole
@@ -58,8 +61,10 @@ typedef struct Ecole
 	int nbEleveTotal; // Nombre total d'élève dans l'école
 	int nbEleveNiveau[5]; // Nombre d'élève par niveau. Chaque case représente un niveau
 	int nbClasse; // Nombre de classe totale dans l'école
-
-	struct Classe *classe[5]; // Appel de la fonction classe pour saisir une classe dans l'école
+	
+	struct Classe TabClasse[4];
+	
+//	struct Classe *classe[5]; // Appel de la fonction classe pour saisir une classe dans l'école
 //          ******  Utilisation d'un simple tableau ou bien d'une table de hachage ?    *******
 } Ecole_t;
 
