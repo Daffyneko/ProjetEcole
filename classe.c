@@ -47,10 +47,10 @@ void ModifierClasse(Classe_t *C)
     {
         default : break;
         case 1 :
-            do {printf("\nVeuillez entrer le niveau de la classe : ");// entrer le nouveau niveau pour remplacer l'ancien
-            scanf("%d", & C->niveau);
-                }
-            while(C->niveau!='CP' && C->niveau!='CE1' && C->niveau!='CE2' && C->niveau!='CM1' && C->niveau!='CM2'); // redemande tant que le niveau ne correspond pas
+            do {
+                printf("\nVeuillez entrer le niveau de la classe : ");// entrer le nouveau niveau pour remplacer l'ancien
+                scanf("%s", C->niveau);
+            }while(strcmp(C->niveau,"CP")!=0 && strcmp(C->niveau,"CE1")!=0 && strcmp(C->niveau,"CE2")!=0 && strcmp(C->niveau,"CM1")!=0 && strcmp(C->niveau,"CM2")!=0); // redemande tant que le niveau ne correspond pas
             printf("\n***Modification effectuée***\n");
             break;
 
