@@ -4,7 +4,7 @@
 #include "ecole.h"
 
 int main(){
-    Eleve_t E;
+    //Eleve_t E;
     int choix=-1;
     printf("\n----------------------Bienvenue à l'école LDNR----------------------\n");
     do{
@@ -20,8 +20,9 @@ int main(){
         default : return -1;
         case 0 : break;
         case 1 ://Ecrivez ici les fonctions que vous voulez tester
-                SaisirEleve(&E);
-                AfficherEleve(E);
+                //Cela nous permet de voir aussi comment les autres utilisent leurs fonctions
+                //SaisirEleve(&E);
+                //AfficherEleve(E);
                 break;
         case 2 :
             printf("\nGestion des élèves.");
