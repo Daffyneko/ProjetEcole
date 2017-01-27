@@ -139,3 +139,46 @@ void Initialisation(struct Ecole *E)
 
 
 // ------------------------------------------------------------------------------------------------------------------------ //
+
+/***********************************************Daphné***********************************************/
+void RechercherEleve(Ecole_t E){
+    char recherche[MAX];//le mot à rechercher
+    int trouve, modifie;
+    int i, j;
+    printf("\nVeuillez entrer le nom de l'élève à modifier : ");
+    fscanf(stdin,"%s",recherche);
+    getchar();
+    modifie=0;
+    for(i=0;i<E.nbClasse;i++){
+        for(j=0;j<E.TabClasse[i].nbEleveClasse;j++){
+            trouve=Recherche(E.TabClasse[i].TabEleve[j].nom, recherche);
+            if(trouve==0){
+                ModifierEleve(&E.TabClasse[i].TabEleve[j]);
+                modifie=1;
+            }
+        }
+    }
+    if(modifie!=1){
+        printf("\n***L'élève n'a pas été trouvé***\n");
+    }
+}
+
+int RechercherClasse(Ecole_t E){
+    char recherche[MAX];//le mot à rechercher
+    int trouve, numero;
+    int i;
+    printf("\nVeuillez entrer le nom de la classe à modifier : ");
+    fscanf(stdin,"%s",recherche);
+    getchar();
+    printf("\nVeuillez entrer le numéro de la classe à modifier : ");
+    scanf("%d", &numero);
+    for(i=0;i<E.nbClasse;i++){
+        trouve=Recherche(E.TabClasse[i].niveau, recherche);
+        if(trouve==0 && E.TabClasse[i].numClasse==numero){
+            return i;
+            }
+    }
+    printf("\n***La classe n'a pas été trouvée***\n");
+    return -1;
+}
+/****************************************************************************************************/
