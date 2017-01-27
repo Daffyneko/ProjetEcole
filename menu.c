@@ -42,7 +42,6 @@ void MenuEleve(Ecole_t E){
 void MenuClasse(Ecole_t E){
     int choix=-1;
     int i;
-    Classe_t C;
     do{
         printf("\n*****Gestion des classes*****\n");
         printf("\nQue voulez-vous faire ?\n1 - Ajouter une classe\n2 - Modifier une classe\n3 - Afficher une classe\n0 - Retourner au menu précédent\n");
@@ -53,9 +52,7 @@ void MenuClasse(Ecole_t E){
             case 0 : break;
             case 1 :
                 printf("\n\n*****Saisie d'une classe*****\n");
-                SaisirClasse(&C);
-                AfficherClasse(C);
-                AjouterClasse(C,&E);
+                AjouterClasse(&E, E.nbClasse);
                 break;
             case 2 :
                 //Modification d'une classe
