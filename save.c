@@ -158,3 +158,91 @@ void Ecrire_Fichier_Classe(const char *FichierEcole2, Ecole_t E, int nbClasse)
     }
     fclose(ptr_fichier); // fermeture du fichier
 }
+
+
+------------------------------------------------------
+    
+    
+void FonctionChargeClasse(struct Ecole *E)
+{
+    char ligne[500];
+    char poubelle[500];
+    char *champ;
+    int i=0;
+
+    FILE *ptr_sauvegarde;
+    ptr_sauvegarde=fopen("classe.csv", "r");
+
+    if(!ptr_sauvegarde)
+    {
+        perror("Impossible d'ouvrir le fichier ecole.csv\n");
+        exit(-1);
+    }
+
+fgets(poubelle, sizeof(ligne), ptr_sauvegarde); // Pour sauter la première ligne qui est tout simplement le détail de ce que représente chaque colonnes
+
+    while(!feof(ptr_sauvegarde))
+    {
+        fgets(ligne, sizeof(ligne), ptr_sauvegarde);
+        champ=strtok(ligne, ";");
+        strcpy(E->TabClasse[i].niveau, champ);
+        champ=strtok(NULL, ";");
+        strcpy(E->TabClasse[i].nomEnseignant, champ);
+        champ=strtok(NULL, "");
+        sscanf(champ,"%d ; %d",&E->TabClasse[i].numClasse ,&E->TabClasse[i].nbEleveClasse);
+        i++;
+    }
+}
+
+
+void test(struct Ecole *E)
+{
+    int i, j;
+    char *champ;
+    char ligne[300];
+    FILE *ptr_fichier;
+
+    ptr_fichier = fopen("Test2.csv", "r"); // ouverture du fichier en mode lecture
+
+    if(!ptr_fichier) // si l'ouverture se passe mal
+    {
+        perror("erreur ouverture du fichier");
+        exit(EXIT_FAILURE);
+    }
+
+    for (i=0; i<2; i++)
+        for (j=0; j<4; j++)
+        {
+printf("test %d\n", j);
+fgets(ligne, 300, ptr_fichier); // lire la ligne
+//printf("%s", ligne);
+  champ = strtok(ligne, ";");// mettre dans champ les élément de ligne jusqu'au prochain ';'
+
+            strcpy(E->TabClasse[i].TabEleve[j].nom, ligne); //copier champ dans le nom de l'élèvé
+
+            champ = strtok(NULL, ";");// mettre dans champ les éléments de ligne jusqu'au prochain ';'
+
+            strcpy(E->TabClasse[i].TabEleve[j].prenom, champ); //copier champ dans le prénom de l'élèvé
+
+         //   champ = strtok(NULL, ";");// mettre dans champ les éléments de ligne jusqu'au prochain ';'
+         //   strcpy(E->TabClasse[i].TabEleve[j].sexe,champ);//copier champ dans le sexe de l'élèvé
+//        printf("\n  %s", champ);
+
+            champ = strtok(NULL, ";"); // mettre dans champ les élément de ligne jusqu'au prochain ';'
+            // copie les différents éléments du champ actuel, mais sans utiliser champ
+
+            memset (&E->TabClasse[i].TabEleve[j].dateNaissance, 0, sizeof(E->TabClasse[i].TabEleve[j].dateNaissance)); // initialisation de la structure tm (tmretour)
+            sscanf(champ,"%d/%d/%d", &E->TabClasse[i].TabEleve[j].dateNaissance.tm_mday,
+                   &E->TabClasse[i].TabEleve[j].dateNaissance.tm_mon, &E->TabClasse[i].TabEleve[j].dateNaissance.tm_year);
+
+        /*    printf(" ------la date est %d/%d/%d----", E->TabClasse[i].TabEleve[j].dateNaissance.tm_mday,
+                   E->TabClasse[i].TabEleve[j].dateNaissance.tm_mon, E->TabClasse[i].TabEleve[j].dateNaissance.tm_year);*/
+
+        }
+}
+
+
+for (i=0; i<4; i++)
+    printf("%s - %s - %d/%d/%d\n",E.TabClasse[0].TabEleve[i].nom, E.TabClasse[0].TabEleve[i].prenom,
+               E.TabClasse[0].TabEleve[i].dateNaissance.tm_mday, E.TabClasse[0].TabEleve[i].dateNaissance.tm_mon,
+               E.TabClasse[0].TabEleve[i].dateNaissance.tm_year);
