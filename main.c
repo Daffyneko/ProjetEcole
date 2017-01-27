@@ -4,6 +4,7 @@
 #include "ecole.h"
 #include "menu.h"
 
+/***********************************************Daphné***********************************************/
 int main(){
     Eleve_t E;
     Ecole_t MonEcole;
@@ -29,12 +30,14 @@ int main(){
                 MenuEleve(MonEcole);
                 break;
         case 3 :
-            MenuClasse(MonEcole);
-            break;
+                MenuClasse(MonEcole);
+                break;
         case 4 :
-            MenuEcole(MonEcole);
+                MenuEcole(MonEcole);
+                break;
         }
     }while(choix!=0);
 
     return 0;
 }
+/****************************************************************************************************/
