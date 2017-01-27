@@ -28,12 +28,12 @@ void SaisirEcole (struct Ecole *E) // Saisi les paramètres de l'école
         E->nomEcole[strlen(E->nomEcole)-1]='\0'; // Si oui, on mets '\0' à la place
 
     printf("Saisir le nom du directeur : ");
-    fgets(E->nomDirecteur,sizeof(E->nomDirecteur), stdin); // Permet de saisir le nom du directeur
+    fgets(E->nomDirecteur,sizeof(E->nomDirecteur), stdin); // Permet de saisir le nom de la classe
     if (E->nomDirecteur[strlen(E->nomDirecteur)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
         E->nomDirecteur[strlen(E->nomDirecteur)-1]='\0'; // Si oui, on mets '\0' à la place
 }
 
-void AfficherEleveTotal(struct Ecole E) // Affiche TOUT les élèves de l'école
+void AfficherEleveTotal(struct Ecole E) // Affiche TOUS les élèves de l'école
 {
     int i, j;
     for (i=0; i<E.nbClasse; i++) // Navigue dans les classes
@@ -61,7 +61,7 @@ void ChoixClasseAfficher(struct Ecole E) // N'affiche les élèves que d'une seu
 
     printf("Saisir le nom et le numéro de la classe à afficher : ");
     printf("Nom: ");
-    fgets(choixClasse,sizeof(choixClasse), stdin); // Permet de saisir le nom du directeur
+    fgets(choixClasse,sizeof(choixClasse), stdin); // Permet de saisir le nom de la classe
     if (choixClasse[strlen(choixClasse)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
         choixClasse[strlen(choixClasse)-1]='\0'; // Si oui, on mets '\0' à la place
 
