@@ -6,9 +6,9 @@
 
 /***********************************************Daphné***********************************************/
 int main(){
-    Eleve_t E;
     Ecole_t MonEcole;
     int choix=-1;
+    Initialisation(&MonEcole);
     printf("\n----------------------Bienvenue à l'école LDNR----------------------\n");
     do{
         printf("\nQue voulez-vous faire ?");
@@ -18,22 +18,22 @@ int main(){
         printf("\n4 - Gestion de l'école");
         printf("\n0 - Quitter\n");
         scanf("%d",&choix);
+        getchar();
 
         switch(choix){
         default : return -1;
         case 0 : break;
         case 1 ://Ecrivez ici les fonctions que vous voulez tester
-                SaisirEleve(&E);
-                AfficherEleve(E);
+                AfficherClasse(MonEcole.TabClasse[0]);
                 break;
         case 2 :
-                MenuEleve(MonEcole);
+                MenuEleve(&MonEcole);
                 break;
         case 3 :
-                MenuClasse(MonEcole);
+                MenuClasse(&MonEcole);
                 break;
         case 4 :
-                MenuEcole(MonEcole);
+                MenuEcole(&MonEcole);
                 break;
         }
     }while(choix!=0);
