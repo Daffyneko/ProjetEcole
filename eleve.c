@@ -4,7 +4,7 @@
 
 #include "eleve.h"
 
-
+/***********************************************Daphné***********************************************/
 
 void SaisirEleve(Eleve_t *E){
     int j, m, a;//variables de lecture de la date de naissance
@@ -70,3 +70,4 @@ void ModifierEleve(Eleve_t *E){
             break;
     }
 }
+/****************************************************************************************************/
