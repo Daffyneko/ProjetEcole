@@ -131,6 +131,12 @@ void AfficherClasse(Classe_t *tete);
 }
 /***********************************************Daphné***********************************************/
 void AffecterEleve(Eleve_t E, Classe_t *C){
-    strcpy(C->TabEleve[C->nbEleveClasse+1].nom,E.nom);
+    strcpy(C->TabEleve[C->nbEleveClasse].nom,E.nom);
+    strcpy(C->TabEleve[C->nbEleveClasse].prenom,E.prenom);
+    C->TabEleve[C->nbEleveClasse].sexe=E.sexe;
+    C->TabEleve[C->nbEleveClasse].dateNaissance.tm_mday=E.dateNaissance.tm_mday;
+    C->TabEleve[C->nbEleveClasse].dateNaissance.tm_mon=E.dateNaissance.tm_mon;
+    C->TabEleve[C->nbEleveClasse].dateNaissance.tm_year=E.dateNaissance.tm_year;
+    C->nbEleveClasse++;
 }
 /****************************************************************************************************/
