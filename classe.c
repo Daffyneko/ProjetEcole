@@ -33,10 +33,6 @@ void SaisirClasse(Classe_t *C)
     }
 };
 
-void AffecterEleve(Eleve_t E, Classe_t *C){
-    strcpy(C->TabEleve[C->nbEleveClasse+1].nom,E.nom);
-}
-
 void ModifierClasse(Classe_t *C)
 {
     int choix=-1;
@@ -133,3 +129,8 @@ void AfficherClasse(Classe_t *tete);
         eleve = eleve->suivant;
     }
 }
+/***********************************************Daphné***********************************************/
+void AffecterEleve(Eleve_t E, Classe_t *C){
+    strcpy(C->TabEleve[C->nbEleveClasse+1].nom,E.nom);
+}
+/****************************************************************************************************/
