@@ -38,6 +38,14 @@ int Recherche(char *A, char *B); // Fonction de recherche. Prends en paramètres
 
 void Initialisation(struct Ecole *);
 
+/*Ecrit un tableau de classes de l'école dans un fichier csv appelé FichierEcole*/
+void Ecrire_Fichier_Classe(const char *FichierEcole, Ecole_t E, int nb);
+
+
+/*Lit un tableau de classes de l'école du fichier FichierEcole.csv*/
+void Lire_Fichier_Classe(const char *FichierEcole, Ecole_t *E, int nb);
+
+
 void FonctionSave(struct Ecole);
 
 void FonctionChargeEcole(struct Ecole *);
