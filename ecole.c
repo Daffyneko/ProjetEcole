@@ -182,10 +182,8 @@ int RechercherClasse(Ecole_t E){
     return -1;
 }
 
-void AjouterClasse(Classe_t C, Ecole_t *E){
-    strcpy(E->TabClasse[E->nbClasse].niveau,C.niveau);
-    E->TabClasse[E->nbClasse].numClasse=C.numClasse;
-    strcpy(E->TabClasse[E->nbClasse].nomEnseignant, C.nomEnseignant);
+void AjouterClasse(Ecole_t *E, int position){
+    SaisirClasse(&E->TabClasse[position]);
     E->nbClasse+=1;
 }
 /****************************************************************************************************/
