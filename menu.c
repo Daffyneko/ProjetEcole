@@ -5,7 +5,7 @@
 
 /***********************************************Daphné***********************************************/
 
-void MenuEleve(Ecole_t E){
+void MenuEleve(Ecole_t *E){
     int choix=-1;
     int i;
     Eleve_t eleve;
@@ -19,19 +19,19 @@ void MenuEleve(Ecole_t E){
             case 0 : break;
             case 1 :
                 SaisirEleve(&eleve);
-                E.nbEleveTotal++;
+                E->nbEleveTotal++;
                 printf("\n\nVous avez saisi les informations suivantes : ");
                 AfficherEleve(eleve);
                 printf("\n***Veuillez indiquer la classe à laquelle l'élève sera affecté.***\n");
-                i=RechercherClasse(E);
-                AffecterEleve(eleve, &E.TabClasse[i]);
+                i=RechercherClasse(*E);
+                AffecterEleve(eleve, &E->TabClasse[i]);
                 break;
             case 2 :
                 printf("\n***Affichage des élèves***\n");
-                AfficherEleveTotal(E);
+                AfficherEleveTotal(*E);
                 break;
             case 3 :
-                RechercherEleve(E);
+                RechercherEleve(*E);
                 break;
             case 4 :
                 printf("\n***Suppression d'un élève***\n");
@@ -39,7 +39,7 @@ void MenuEleve(Ecole_t E){
         }
     }while(choix!=0);
 }
-void MenuClasse(Ecole_t E){
+void MenuClasse(Ecole_t *E){
     int choix=-1;
     int i;
     do{
@@ -52,21 +52,21 @@ void MenuClasse(Ecole_t E){
             case 0 : break;
             case 1 :
                 printf("\n\n*****Saisie d'une classe*****\n");
-                AjouterClasse(&E, E.nbClasse);
+                AjouterClasse(E, E->nbClasse);
                 break;
             case 2 :
                 //Modification d'une classe
-                i=RechercherClasse(E);
-                ModifierClasse(&E.TabClasse[i]);
+                i=RechercherClasse(*E);
+                ModifierClasse(&E->TabClasse[i]);
                 break;
             case 3 :
                 printf("\n\n*****Affichage d'une classe*****\n");
-                ChoixClasseAfficher(E);
+                ChoixClasseAfficher(*E);
                 break;
         }
     }while(choix!=0);
 }
-void MenuEcole(Ecole_t E){
+void MenuEcole(Ecole_t *E){
     int choix=-1;
     do{
         printf("\n*****Gestion de l'école*****\n");
@@ -78,15 +78,15 @@ void MenuEcole(Ecole_t E){
             case 0 : break;
             case 1 :
                 printf("\n\n*****Saisie des informations de l'école*****\n");
-                SaisirEcole(&E);
+                SaisirEcole(E);
                 break;
             case 2 :
                 printf("\n\n*****Modification des informations de l'école*****\n");
-                ModifierEcole(&E);
+                ModifierEcole(E);
                 break;
             case 3 :
                 printf("\n\n*****Affichage de l'école*****\n");
-                AfficherEcole(E);
+                AfficherEcole(*E);
                 break;
         }
     }while(choix!=0);
