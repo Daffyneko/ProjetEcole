@@ -8,7 +8,7 @@
 
 #ifndef ECOLE_H
 #define ECOLE_H
-
+#define MAXCLASSE 15
 #define MAX 30
 
 typedef struct Ecole
@@ -18,21 +18,31 @@ typedef struct Ecole
     int nbEleveTotal;
     int nbEleveNiveau[5];
     int nbClasse;
-    struct Classe TabClasse[5];
+    struct Classe TabClasse[MAXCLASSE];
 } Ecole_t;
 
 
-void AfficherEcole (struct Ecole); // Affiche les parmètres de l'école
+void AfficherEcole(struct Ecole); // Affiche les parmètres de l'école
 
-void SaisirEcole (struct Ecole *); // Saisi les paramètres de l'école
+void SaisirEcole(struct Ecole *); // Saisi les paramètres de l'école
 
-void AfficherParametreClasse (struct Ecole); // Affiche les paramètres de toutes les classes (Niveau, numéro, instit... )
+void ModifierEcole(struct Ecole *);
 
-void AfficherEleveTotal (struct Ecole); // Affiche TOUT les élèves de l'école
+void AfficherParametreClasse(struct Ecole); // Affiche les paramètres de toutes les classes (Niveau, numéro, instit... )
+
+void AfficherEleveTotal(struct Ecole); // Affiche TOUT les élèves de l'école
 
 void AfficherEleveClasse(struct Ecole); // N'affiche les élèves que d'une seule classe
 
 int Recherche(char *A, char *B); // Fonction de recherche. Prends en paramètres deux chaines de caractères
+
+void Initialisation(struct Ecole *);
+
+void FonctionSave(struct Ecole);
+
+void FonctionChargeEcole(struct Ecole *);
+
+void FonctionChargeClasse(struct Ecole *);
 
 
 #endif // ECOLE_H
