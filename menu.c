@@ -3,11 +3,11 @@
 
 #include "menu.h"
 
+/***********************************************Daphné***********************************************/
+
 void MenuEleve(Ecole_t E){
     int choix=-1;
-    char recherche[MAX];//le mot à rechercher
-    int trouve, modifie;
-    int i, j;
+    int i;
     Eleve_t eleve;
     do{
         printf("\n*****Gestion des élèves*****\n");
@@ -21,27 +21,16 @@ void MenuEleve(Ecole_t E){
                 E.nbEleveTotal++;
                 printf("\n\nVous avez saisi les informations suivantes : ");
                 AfficherEleve(eleve);
+                printf("\n***Veuillez indiquer la classe à laquelle l'élève sera affecté.***\n");
+                i=RechercherClasse(E);
+                AffecterEleve(eleve, &E.TabClasse[i]);
                 break;
             case 2 :
                 printf("\n***Affichage des élèves***\n");
-                AfficherEleve(eleve);//fonction temporaire, à remplacer par affichertabeleve
+                AfficherEleveTotal(E);
                 break;
             case 3 :
-                printf("\nVeuillez entrer le nom de l'élève à modifier : ");
-                fscanf(stdin,"%s",recherche);
-                modifie=0;
-                for(i=0;i<E.nbClasse;i++){
-                    for(j=0;j<E.TabClasse[i].nbEleveClasse;j++){
-                        trouve=Recherche(E.TabClasse[i].TabEleve[j].nom, recherche);
-                        if(trouve==0){
-                            ModifierEleve(&E.TabClasse[i].TabEleve[j]);
-                            modifie=1;
-                        }
-                    }
-                }
-                if(modifie!=1){
-                    printf("\n***L'élève n'a pas été trouvé***\n");
-                }
+                RechercherEleve(E);
                 break;
             case 4 :
                 printf("\n***Suppression d'un élève***\n");
@@ -51,8 +40,7 @@ void MenuEleve(Ecole_t E){
 }
 void MenuClasse(Ecole_t E){
     int choix=-1;
-    int i, trouve, modifie, numero;
-    char recherche;
+    int i;
     Classe_t C;
     do{
         printf("\n*****Gestion des classes*****\n");
@@ -64,28 +52,17 @@ void MenuClasse(Ecole_t E){
             case 1 :
                 printf("\n\n*****Saisie d'une classe*****\n");
                 SaisirClasse(&C);
+                E.nbClasse++;
+                E.TabClasse[E.nbClasse]=C;
                 break;
             case 2 :
-                printf("\nVeuillez entrer le nom de la classe à modifier : ");
-                fscanf(stdin,"%s",recherche);
-                getchar();
-                printf("\nVeuillez entrer le numéro de la classe à modifier : ");
-                scanf("%d", &numero);
-                modifie=0;
-                for(i=0;i<E.nbClasse;i++){
-                    trouve=Recherche(E.TabClasse[i].niveau, recherche);
-                    if(trouve==0 && E.TabClasse[i].numClasse==numero){
-                        ModifierClasse(&E.TabClasse[i]);
-                        modifie=1;
-                        }
-                }
-                if(modifie!=1){
-                    printf("\n***La classe n'a pas été trouvée***\n");
-                }
+                //Modification d'une classe
+                i=RechercherClasse(E);
+                ModifierClasse(&E.TabClasse[i]);
                 break;
             case 3 :
                 printf("\n\n*****Affichage d'une classe*****\n");
-                AfficherClasse(C);
+                AfficherUneClasse(E);
                 break;
         }
     }while(choix!=0);
@@ -113,3 +90,4 @@ void MenuEcole(Ecole_t E){
         }
     }while(choix!=0);
 }
+/****************************************************************************************************/
