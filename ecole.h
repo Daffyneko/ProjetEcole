@@ -56,6 +56,8 @@ void FonctionChargeClasse(struct Ecole *);
 void RechercherEleve(Ecole_t E);
 
 int RechercherClasse(Ecole_t E);
+
+void AjouterClasse(Classe_t C, Ecole_t *E)
 /********************************************************************/
 
 #endif // ECOLE_H
