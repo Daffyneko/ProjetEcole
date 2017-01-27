@@ -52,5 +52,10 @@ void FonctionChargeEcole(struct Ecole *);
 
 void FonctionChargeClasse(struct Ecole *);
 
+/******************************Daphné********************************/
+void RechercherEleve(Ecole_t E);
+
+int RechercherClasse(Ecole_t E);
+/********************************************************************/
 
 #endif // ECOLE_H
