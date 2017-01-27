@@ -44,10 +44,10 @@ typedef struct Eleve
 
 typedef struct Classe
 {
-	char niveau[4]; // Niveau de la classe CP CE1...
-	char nomEnseignant[MAX]; // Nom du prof s'occupant de la classe
-	int numClasse; // Numero de la classe dans le cas ou il y aurait plusieurs CP ou autres classes...
-	int nbEleveClasse; // Nombre d'élève par classe
+	char niveau[4]; // Niveau de la classe CP CE1...A RECUPERER DANS FICHIER
+	char nomEnseignant[MAX]; // Nom du prof s'occupant de la classe-A RECUPERER DANS FICHIER
+	int numClasse; // Numero de la classe dans le cas ou il y aurait plusieurs CP ou autres classes...A RECUPERER DANS FICHIER
+	int nbEleveClasse; // Nombre d'élève par classe-A RECUPERER DANS FICHIER
 /*	struct Eleve *premier; // Appel de la structure Eleve pour saisir un élève dans la classe
 	struct Classe *suivant; // Utilisation de liste chainée pour avoir une liste de classe */
 	
@@ -56,11 +56,11 @@ typedef struct Classe
 
 typedef struct Ecole
 {
-	char nomEcole[MAX]; // Nom de l'école
-	char nomDirecteur[MAX]; // Nom du directeur de lécole
+	char nomEcole[MAX]; // Nom de l'école- A RECUPERER DANS FICHIER
+	char nomDirecteur[MAX]; // Nom du directeur de lécole-A RECUPERER DANS FICHIER
 	int nbEleveTotal; // Nombre total d'élève dans l'école
-	int nbEleveNiveau[5]; // Nombre d'élève par niveau. Chaque case représente un niveau
-	int nbClasse; // Nombre de classe totale dans l'école
+	//int nbEleveNiveau[5]; // Nombre d'élève par niveau. Chaque case représente un niveau
+	int nbClasse; // Nombre de classe totale dans l'école-A RECUPERER DANS FICHIER
 	
 	struct Classe TabClasse[4];
 	
