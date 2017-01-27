@@ -181,4 +181,11 @@ int RechercherClasse(Ecole_t E){
     printf("\n***La classe n'a pas été trouvée***\n");
     return -1;
 }
+
+void AjouterClasse(Classe_t C, Ecole_t *E){
+    strcpy(E->TabClasse[E->nbClasse].niveau,C.niveau);
+    E->TabClasse[E->nbClasse].numClasse=C.numClasse;
+    strcpy(E->TabClasse[E->nbClasse].nomEnseignant, C.nomEnseignant);
+    E->nbClasse+=1;
+}
 /****************************************************************************************************/
