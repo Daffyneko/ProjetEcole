@@ -5,9 +5,9 @@
 #define MENU_H
 #include "ecole.h"
 /***********************************************Daphné***********************************************/
-void MenuEleve(Ecole_t E);
-void MenuClasse(Ecole_t E);
-void MenuEcole(Ecole_t E);
+void MenuEleve(Ecole_t *E);
+void MenuClasse(Ecole_t *E);
+void MenuEcole(Ecole_t *E);
 /****************************************************************************************************/
 #endif // MENU_H
 
