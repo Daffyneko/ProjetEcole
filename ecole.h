@@ -57,7 +57,7 @@ void RechercherEleve(Ecole_t E);
 
 int RechercherClasse(Ecole_t E);
 
-void AjouterClasse(Classe_t C, Ecole_t *E)
+void AjouterClasse(Ecole_t *E, int position);
 /********************************************************************/
 
 #endif // ECOLE_H
