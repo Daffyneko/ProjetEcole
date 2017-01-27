@@ -35,6 +35,7 @@ void MenuEleve(Ecole_t *E){
                 break;
             case 4 :
                 printf("\n***Suppression d'un élève***\n");
+                SupprimerEleve(E);
                 break;
         }
     }while(choix!=0);
