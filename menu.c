@@ -21,7 +21,7 @@ void MenuEleve(Ecole_t *E){
             case 1 :
                 SaisirEleve(&eleve);
                 E->nbEleveTotal++;
-                printf("\n\nVous avez saisi les informations suivantes : ");
+                printf("\n\nVous avez saisi les informations suivantes : \n");
                 AfficherEleve(eleve);
                 printf("\n***Veuillez indiquer la classe a laquelle l'eleve sera affecte.***\n");
                 i=RechercherClasse(*E);
