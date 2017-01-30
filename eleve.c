@@ -70,4 +70,39 @@ void ModifierEleve(Eleve_t *E){
             break;
     }
 }
+
+void RangerEleves(Eleve_t E[], int nbe){
+    int i, permut=1;
+    Eleve_t temp;
+    while(permut==1){
+        permut=0;
+        for(i=0;i<nbe;i++){
+            if(strcmp(E[i].nom,E[i+1].nom)>0){
+                permut=1;
+                /* COPIE E[i]-->temp */
+                strcpy(temp.nom, E[i].nom);
+                strcpy(temp.prenom, E[i].prenom);
+                temp.sexe=E[i].sexe;
+                temp.dateNaissance.tm_mday=E[i].dateNaissance.tm_mday;
+                temp.dateNaissance.tm_mon=E[i].dateNaissance.tm_mon;
+                temp.dateNaissance.tm_year=E[i].dateNaissance.tm_year;
+                /* COPIE E[i+1]-->E[i] */
+                strcpy(E[i].nom, E[i+1].nom);
+                strcpy(E[i].prenom, E[i+1].prenom);
+                E[i].sexe=E[i+1].sexe;
+                E[i].dateNaissance.tm_mday=E[i+1].dateNaissance.tm_mday;
+                E[i].dateNaissance.tm_mon=E[i+1].dateNaissance.tm_mon;
+                E[i].dateNaissance.tm_year=E[i+1].dateNaissance.tm_year;
+                /* COPIE temp-->E[i+1] */
+                strcpy(E[i+1].nom, temp.nom);
+                strcpy(E[i+1].prenom, temp.prenom);
+                E[i+1].sexe=temp.sexe;
+                E[i+1].dateNaissance.tm_mday=temp.dateNaissance.tm_mday;
+                E[i+1].dateNaissance.tm_mon=temp.dateNaissance.tm_mon;
+                E[i+1].dateNaissance.tm_year=temp.dateNaissance.tm_year;
+            }
+        }
+    }
+
+}
 /****************************************************************************************************/
