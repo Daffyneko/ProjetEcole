@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <locale.h>
 
 
 #include "ecole.h"
@@ -14,10 +15,10 @@
 
 void AfficherEcole (struct Ecole E) // Affiche les parmètres de l'école
 {
-    printf("Nom de l'ecole : %s\n", E.nomEcole); // Affiche le nom dde l'école
-    printf("Nom du directeur : %s\n", E.nomDirecteur); // Affiche le nom du directeur
-    printf("Nombre de classe : %d\n", E.nbClasse); // Affiche le nombre de classe dans l'école
-    printf("Nombre d'eleve dans l'ecole : %d\n", E.nbEleveTotal); // Affiche le nombre d'élève dans toute l'école
+    printf("Nom de l'ecole: %s\n", E.nomEcole); // Affiche le nom dde l'école
+    printf("Nom du directeur: %s\n", E.nomDirecteur); // Affiche le nom du directeur
+    printf("Nombre de classe: %d\n", E.nbClasse); // Affiche le nombre de classe dans l'école
+    printf("Nombre d'eleve dans l'ecole: %d\n", E.nbEleveTotal); // Affiche le nombre d'élève dans toute l'école
 }
 
 void SaisirEcole (struct Ecole *E) // Saisi les paramètres de l'école
@@ -26,14 +27,18 @@ void SaisirEcole (struct Ecole *E) // Saisi les paramètres de l'école
     fgets(E->nomEcole,sizeof(E->nomEcole), stdin); // Permet de saisir le nom de l'école
     if (E->nomEcole[strlen(E->nomEcole)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
         E->nomEcole[strlen(E->nomEcole)-1]='\0'; // Si oui, on mets '\0' à la place
+    else // S'il n'y a pas de retour à la ligne ça veut dire que la saisie est trop longue
+        getchar(); // Donc la fonction n'aura pas enregistré la touche <entrée>
 
     printf("Saisir le nom du directeur : ");
-    fgets(E->nomDirecteur,sizeof(E->nomDirecteur), stdin); // Permet de saisir le nom de la classe
+    fgets(E->nomDirecteur,sizeof(E->nomDirecteur), stdin); // Permet de saisir le nom du directeur
     if (E->nomDirecteur[strlen(E->nomDirecteur)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
         E->nomDirecteur[strlen(E->nomDirecteur)-1]='\0'; // Si oui, on mets '\0' à la place
+    else // S'il n'y a pas de retour à la ligne ça veut dire que la saisie est trop longue
+        getchar(); // Donc la fonction n'aura pas enregistré la touche <entrée>
 }
 
-void AfficherEleveTotal(struct Ecole E) // Affiche TOUS les élèves de l'école
+void AfficherEleveTotal(struct Ecole E) // Affiche TOUT les élèves de l'école
 {
     int i, j;
     for (i=0; i<E.nbClasse; i++) // Navigue dans les classes
@@ -47,12 +52,7 @@ void AfficherParametreClasse(struct Ecole E) // Affiche les paramètres de toute
     for (i=0; i<E.nbClasse; i++) // Navigue dans les classes
             AfficherClasse(E.TabClasse[i]); // Envoie les classes à la fonction d'affichage de paramètres
 }
-/*
-void ChoixClasseAfficher2(struct Ecole E)
-{
-    AfficherParametreClasse(E);
-}
-*/
+
 void ChoixClasseAfficher(struct Ecole E) // N'affiche les élèves que d'une seule classe
 { // Affiche les élèves d'une classe choisie
     char choixClasse[4]; // Stock le nom de la classe rechercher
@@ -61,9 +61,11 @@ void ChoixClasseAfficher(struct Ecole E) // N'affiche les élèves que d'une seu
 
     printf("Saisir le nom et le numéro de la classe à afficher : ");
     printf("Nom: ");
-    fgets(choixClasse,sizeof(choixClasse), stdin); // Permet de saisir le nom de la classe
+    fgets(choixClasse,sizeof(choixClasse), stdin); // Permet de saisir le nom du directeur
     if (choixClasse[strlen(choixClasse)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
         choixClasse[strlen(choixClasse)-1]='\0'; // Si oui, on mets '\0' à la place
+    else // S'il n'y a pas de retour à la ligne ça veut dire que la saisie est trop longue
+        getchar(); // Donc la fonction n'aura pas enregistré la touche <entrée>
 
     for (i=0; i<E.nbClasse; i++)
     {
@@ -86,12 +88,24 @@ int Recherche(char *A, char *B) // Fonction de recherche. Prends en paramètres 
 
 void ModifierEcole(struct Ecole *E)
 { // Modifie l'école en spécifiant le champ
+    char saisie[5];
     int choix=-1;
 
     printf("\n\n\t1- Nom de l'ecole\n");
     printf("\t2- Nom du directeur\n");
-    printf("Quel champ modifier: ");
-    scanf("%d", &choix); // spécifie le champ à modifier
+    printf("\t0- Annuler\n");
+    do
+    {
+        printf("Quel champ modifier: ");
+        fgets(saisie,sizeof(saisie), stdin); // Permet de saisir le nom du directeur
+        if (saisie[strlen(saisie)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
+            saisie[strlen(saisie)-1]='\0'; // Si oui, on mets '\0' à la place
+        else // S'il n'y a pas de retour à la ligne ça veut dire que la saisie est trop longue
+            getchar(); // Donc la fonction n'aura pas enregistré la touche <entrée>
+
+    }while(!(saisie[0]=='0'||saisie[0]=='1'||saisie[0]==2));
+
+    choix=atoi(saisie);
 
     switch (choix)
     {// En fonction du champ  nous emmène à modifier soit l'école soit le nom du directeur
@@ -101,18 +115,25 @@ void ModifierEcole(struct Ecole *E)
                 fgets(E->nomEcole,sizeof(E->nomEcole), stdin); // Permet de saisir le nom de l'école
                 if (E->nomEcole[strlen(E->nomEcole)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
                     E->nomEcole[strlen(E->nomEcole)-1]='\0'; // Si oui, on mets '\0' à la place
+                else // S'il n'y a pas de retour à la ligne ça veut dire que la saisie est trop longue
+                    getchar(); // Donc la fonction n'aura pas enregistré la touche <entrée>
             break;
 
         case 2: printf("Saisir le nouveau nom du directeur: ");
                 fgets(E->nomDirecteur,sizeof(E->nomDirecteur), stdin); // Permet de saisir le nom du directeur
                 if (E->nomDirecteur[strlen(E->nomDirecteur)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
                     E->nomDirecteur[strlen(E->nomDirecteur)-1]='\0'; // Si oui, on mets '\0' à la place
+                else // S'il n'y a pas de retour à la ligne ça veut dire que la saisie est trop longue
+                    getchar(); // Donc la fonction n'aura pas enregistré la touche <entrée>
+            break;
+
+        case 0: return;
             break;
     }
 }
 
 void Initialisation(struct Ecole *E)
-{
+{ // Initialise toutes les variables de l'école à 0 (de 0 à Max define pour les tableaux)
     int i, j;
 
     strcpy(E->nomEcole,"\0");
@@ -138,14 +159,14 @@ void Initialisation(struct Ecole *E)
 }
 
 
-// ------------------------------------------------------------------------------------------------------------------------ //
+// ----------------------------------------------------------------------------------------------------------------------- //
 
-/***********************************************Daphné***********************************************/
+/***********************************************Daphne***********************************************/
 void RechercherEleve(Ecole_t E){
-    char recherche[MAX];//le mot à rechercher
+    char recherche[MAX];//le mot a rechercher
     int trouve, modifie;
     int i, j;
-    printf("\nVeuillez entrer le nom de l'élève à modifier : ");
+    printf("\nVeuillez entrer le nom de l'eleve a modifier : ");
     fscanf(stdin,"%s",recherche);
     getchar();
     modifie=0;
@@ -159,18 +180,18 @@ void RechercherEleve(Ecole_t E){
         }
     }
     if(modifie!=1){
-        printf("\n***L'élève n'a pas été trouvé***\n");
+        printf("\n***L'eleve n'a pas ete trouve***\n");
     }
 }
 
 int RechercherClasse(Ecole_t E){
-    char recherche[MAX];//le mot à rechercher
+    char recherche[MAX];//le mot a rechercher
     int trouve, numero;
     int i;
-    printf("\nVeuillez entrer le nom de la classe à modifier : ");
+    printf("\nVeuillez entrer le nom de la classe a modifier : ");
     fscanf(stdin,"%s",recherche);
     getchar();
-    printf("\nVeuillez entrer le numéro de la classe à modifier : ");
+    printf("\nVeuillez entrer le numero de la classe a modifier : ");
     scanf("%d", &numero);
     for(i=0;i<E.nbClasse;i++){
         trouve=Recherche(E.TabClasse[i].niveau, recherche);
@@ -178,7 +199,7 @@ int RechercherClasse(Ecole_t E){
             return i;
             }
     }
-    printf("\n***La classe n'a pas été trouvée***\n");
+    printf("\n***La classe n'a pas ete trouvee***\n");
     return -1;
 }
 
@@ -188,11 +209,11 @@ void AjouterClasse(Ecole_t *E, int position){
 }
 
 void SupprimerEleve(Ecole_t *E){
-    char recherche[MAX];//le mot à rechercher
+    char recherche[MAX];//le mot a rechercher
     char choixsup;
     int trouve, suppr;
     int i, j, k;
-    printf("\nVeuillez entrer le nom de l'élève à supprimer : ");
+    printf("\nVeuillez entrer le nom de l'eleve a supprimer : ");
     fscanf(stdin,"%s",recherche);
     getchar();
     suppr=0;
@@ -201,7 +222,7 @@ void SupprimerEleve(Ecole_t *E){
             trouve=Recherche(E->TabClasse[i].TabEleve[j].nom, recherche);
             if(trouve==0){
                 AfficherEleve(E->TabClasse[i].TabEleve[j]);
-                printf("\n\n*************Voulez-vous vraiment supprimer cet élève ? (o/n)*************\n");
+                printf("\n\n*************Voulez-vous vraiment supprimer cet eleve ? (o/n)*************\n");
                 scanf("%c",&choixsup);
                 if(choixsup=='o'){
                     for(k=j;k<E->TabClasse[i].nbEleveClasse;k++){
@@ -222,13 +243,13 @@ void SupprimerEleve(Ecole_t *E){
                     E->TabClasse[i].nbEleveClasse-=1;
                 }
                 if(suppr==1){
-                    printf("\n*****L'élève a bien été supprimé*****\n");
+                    printf("\n*****L'eleve a bien ete supprime*****\n");
                 }
             }
         }
     }
     if(suppr!=1){
-        printf("\n***L'élève n'a pas été trouvé***\n");
+        printf("\n***L'eleve n'a pas ete trouve***\n");
     }
 }
 
