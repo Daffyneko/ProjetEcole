@@ -1,23 +1,26 @@
-#Cible principale
-ecole: main.c ecole.o classe.o eleve.o save.o menu.o
-	gcc main.c ecole.o classe.o eleve.o save.o menu.o -o ecole
-	
-#Dependences
-save.o: ecole.o classe.o eleve.o 
-	gcc -c save.c
-	
-menu.o: ecole.o classe.o eleve.o
-	gcc -c menu.c
-	
-ecole.o: classe.o eleve.o
-	gcc -c ecole.c
-	
-classe.o: eleve.o
-	gcc -c classe.c
-	
+# nom du compilateur
+compilator=gcc
+
+ecole: main.c eleve.o classe.o ecole.o save.o menu.o
+	echo "edition de liens"
+	${compilator} main.c eleve.o classe.o ecole.o save.o menu.o -o ecole
+
+menu.o: menu.c save.o ecole.o classe.o eleve.o
+	echo "edition de menu.o"
+	${compilator} -c menu.c
+
+save.o: save.c ecole.o classe.o eleve.o
+	echo "edition de save.o"
+	${compilator} -c save.c
+
+ecole.o: ecole.c classe.o eleve.o
+	echo "edition de ecole.o"
+	${compilator} -c ecole.c
+
+classe.o: classe.c eleve.o
+	echo "edition de classe.o"
+	${compilator} -c classe.c
+
 eleve.o: eleve.c
-	gcc -c eleve.c
-	
-#Cible fictive pour nettoyer les fichiers .o
-MrProper:
-	rm -f *.o
+	echo "edition de eleve.o"
+	${compilator} -c eleve.c
