@@ -8,8 +8,25 @@
 int main(){
     Ecole_t MonEcole;
     int choix=-1;
+    
+    /* AUTHENTIFICATION
+    char login[30]="admin";
+    char mdp[30]="root";
+    char entree[30];
+    printf("\t\t*****AUTHENTIFICATION*****\n\t\tVeuillez vous identifier.");
+    do{
+        printf("\n\tLogin : ");
+        fscanf(stdin,"%s",entree);
+    }while(strcmp(entree,login)!=0);
+
+    do{
+        printf("\n\tMot de passe : ");
+        fscanf(stdin,"%s",entree);
+    }while(strcmp(entree,mdp)!=0);
+*/
+
     Initialisation(&MonEcole);
-    printf("\n----------------------Bienvenue à l'école LDNR----------------------\n");
+    printf("\n----------Bienvenue sur le logiciel de gestion de l'ecole----------\n");
     do{
         printf("\nQue voulez-vous faire ?");
         printf("\n1 - Tests unitaires");
