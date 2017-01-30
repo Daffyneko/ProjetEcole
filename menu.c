@@ -37,7 +37,9 @@ void MenuEleve(Ecole_t *E){
                                 printf("\nOperation annulee.");
                         }
                 }
-                RangerEcole(E);
+                if(E->nbClasse>1 && E->nbEleveTotal){
+                        RangerEcole(E);
+                }
                 break;
             case 2 :
                 printf("\n***Affichage des eleves***\n");
@@ -49,7 +51,9 @@ void MenuEleve(Ecole_t *E){
             case 4 :
                 printf("\n***Suppression d'un eleve***\n");
                 SupprimerEleve(E);
-                RangerEcole(E);
+                if(E->nbClasse>1 && E->nbEleveTotal){
+                        RangerEcole(E);
+                }
                 break;
         }
     }while(choix!=0);
@@ -99,7 +103,9 @@ void MenuEcole(Ecole_t *E){
                 ModifierEcole(E);
                 break;
             case 2 :
-                RangerEcole(E);
+                if(E->nbClasse>1 && E->nbEleveTotal){
+                        RangerEcole(E);
+                }
                 printf("\n\n*****Affichage de l'ecole*****\n");
                 AfficherEcole(*E);
                 break;
