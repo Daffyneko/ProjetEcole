@@ -25,7 +25,7 @@ void MenuEleve(Ecole_t *E){
                 AfficherEleve(eleve);
                 printf("\n***Veuillez indiquer la classe a laquelle l'eleve sera affecte.***\n");
                 i=RechercherClasse(*E);
-                if(E->TabClasse[i].nbEleveClasse<MAXELEVE){
+                if(E->TabClasse[i].nbEleveClasse<25){
                         AffecterEleve(eleve, &E->TabClasse[i]);
                 }else{
                         printf("\nAttention ! Cette classe est deja complete. Voulez-vous creer une nouvelle classe ?(o/n) ");
@@ -68,7 +68,9 @@ void MenuClasse(Ecole_t *E){
             case 1 :
                 printf("\n\n*****Saisie d'une classe*****\n");
                 AjouterClasse(E, E->nbClasse);
-                RangerEcole(E);
+                if(E->nbClasse>1 && E->nbEleveTotal){
+                        RangerEcole(E);
+                }
                 break;
             case 2 :
                 //Modification d'une classe
