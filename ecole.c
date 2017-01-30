@@ -231,4 +231,12 @@ void SupprimerEleve(Ecole_t *E){
         printf("\n***L'élève n'a pas été trouvé***\n");
     }
 }
+
+void RangerEcole(Ecole_t *E){
+    int i;
+    RangerClasses(E->TabClasse, E->nbClasse);
+    for(i=0;i<E->nbClasse;i++){
+        RangerEleves(E->TabClasse[i].TabEleve, E->TabClasse[i].nbEleveClasse);
+    }
+}
 /****************************************************************************************************/
