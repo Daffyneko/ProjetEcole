@@ -52,5 +52,18 @@ void EcrireBinaire(struct Ecole *); // Sauvegarde dans un fichier illisible par 
 
 void test(struct Ecole *);
 
+/******************************Daphne***************************/
+void RechercherEleve(Ecole_t E);
+
+int RechercherClasse(Ecole_t E);
+
+void AjouterClasse(Ecole_t *E, int position);
+
+void SupprimerEleve(Ecole_t *E);
+
+void RangerEcole(Ecole_t *E);
+/***************************************************************/
+
+
 
 #endif // ECOLE_H
