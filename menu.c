@@ -24,7 +24,18 @@ void MenuEleve(Ecole_t *E){
                 AfficherEleve(eleve);
                 printf("\n***Veuillez indiquer la classe à laquelle l'élève sera affecté.***\n");
                 i=RechercherClasse(*E);
-                AffecterEleve(eleve, &E->TabClasse[i]);
+                if(E->TabClasse[i].nbEleveClasse<MAXELEVE){
+                        AffecterEleve(eleve, &E->TabClasse[i]);
+                }else{
+                        printf("\nAttention ! Cette classe est déjà complète. Voulez-vous créer une nouvelle classe ?(o/n) ");
+                        scanf("%c", &nvelleclasse);
+                        getchar();
+                        if(nvelleclasse=='o'){
+                                AjouterClasse(E, E->nbClasse);
+                        }else{
+                                printf("\nOpération annulée.");
+                        }
+                }
                 break;
             case 2 :
                 printf("\n***Affichage des élèves***\n");
