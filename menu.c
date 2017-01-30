@@ -43,6 +43,7 @@ void MenuEleve(Ecole_t *E){
                 break;
             case 2 :
                 printf("\n***Affichage des eleves***\n");
+                printf("\n!Nom                           !Prenom                        !Sexe!Date de naissance!\n");
                 AfficherEleveTotal(*E);
                 break;
             case 3 :
