@@ -27,9 +27,19 @@ void SaisirEleve(Eleve_t *E){
     printf("\n***Elève enregistré***\n");
 }
 void AfficherEleve(Eleve_t E){
-    printf("\n---------------------------------\n");
-    printf("\nNom : %s\nPrénom : %s\nSexe : %c\nDate de naissance : %d/%d/%d", E.nom, E.prenom, E.sexe, E.dateNaissance.tm_mday, E.dateNaissance.tm_mon+1, E.dateNaissance.tm_year+1900);
-    printf("\n\n---------------------------------\n");
+    int longueur, i;
+    longueur=strlen(E.nom);
+    printf("!%s",E.nom);
+    for(i=0;i<30-longueur;i++){
+        printf(" ");
+    }
+    longueur=strlen(E.prenom);
+    printf("!%s",E.prenom);
+    for(i=0;i<30-longueur;i++){
+        printf(" ");
+    }
+    printf("! %c  ",E.sexe);
+    printf("! %d/%d/%d       !\n", E.dateNaissance.tm_mday, E.dateNaissance.tm_mon+1, E.dateNaissance.tm_year+1900);
 }
 void ModifierEleve(Eleve_t *E){
     int choix=-1;
