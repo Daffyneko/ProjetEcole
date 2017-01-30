@@ -89,14 +89,10 @@ void MenuEcole(Ecole_t *E){
             default : break;
             case 0 : break;
             case 1 :
-                printf("\n\n*****Saisie des informations de l'école*****\n");
-                SaisirEcole(E);
-                break;
-            case 2 :
                 printf("\n\n*****Modification des informations de l'école*****\n");
                 ModifierEcole(E);
                 break;
-            case 3 :
+            case 2 :
                 printf("\n\n*****Affichage de l'école*****\n");
                 AfficherEcole(*E);
                 break;
