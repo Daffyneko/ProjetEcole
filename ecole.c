@@ -161,5 +161,103 @@ void Initialisation(struct Ecole *E)
 
 // ----------------------------------------------------------------------------------------------------------------------- //
 
+/***********************************************Daphne***********************************************/
+void RechercherEleve(Ecole_t E){
+    char recherche[MAX];//le mot a rechercher
+    int trouve, modifie;
+    int i, j;
+    printf("\nVeuillez entrer le nom de l'eleve a modifier : ");
+    fscanf(stdin,"%s",recherche);
+    getchar();
+    modifie=0;
+    for(i=0;i<E.nbClasse;i++){
+        for(j=0;j<E.TabClasse[i].nbEleveClasse;j++){
+            trouve=Recherche(E.TabClasse[i].TabEleve[j].nom, recherche);
+            if(trouve==0){
+                ModifierEleve(&E.TabClasse[i].TabEleve[j]);
+                modifie=1;
+            }
+        }
+    }
+    if(modifie!=1){
+        printf("\n***L'eleve n'a pas ete trouve***\n");
+    }
+}
 
+int RechercherClasse(Ecole_t E){
+    char recherche[MAX];//le mot a rechercher
+    int trouve, numero;
+    int i;
+    printf("\nVeuillez entrer le nom de la classe a modifier : ");
+    fscanf(stdin,"%s",recherche);
+    getchar();
+    printf("\nVeuillez entrer le numero de la classe a modifier : ");
+    scanf("%d", &numero);
+    for(i=0;i<E.nbClasse;i++){
+        trouve=Recherche(E.TabClasse[i].niveau, recherche);
+        if(trouve==0 && E.TabClasse[i].numClasse==numero){
+            return i;
+            }
+    }
+    printf("\n***La classe n'a pas ete trouvee***\n");
+    return -1;
+}
 
+void AjouterClasse(Ecole_t *E, int position){
+    SaisirClasse(&E->TabClasse[position]);
+    E->nbClasse+=1;
+}
+
+void SupprimerEleve(Ecole_t *E){
+    char recherche[MAX];//le mot a rechercher
+    char choixsup;
+    int trouve, suppr;
+    int i, j, k;
+    printf("\nVeuillez entrer le nom de l'eleve a supprimer : ");
+    fscanf(stdin,"%s",recherche);
+    getchar();
+    suppr=0;
+    for(i=0;i<E->nbClasse;i++){
+        for(j=0;j<E->TabClasse[i].nbEleveClasse;j++){
+            trouve=Recherche(E->TabClasse[i].TabEleve[j].nom, recherche);
+            if(trouve==0){
+                AfficherEleve(E->TabClasse[i].TabEleve[j]);
+                printf("\n\n*************Voulez-vous vraiment supprimer cet eleve ? (o/n)*************\n");
+                scanf("%c",&choixsup);
+                if(choixsup=='o'){
+                    for(k=j;k<E->TabClasse[i].nbEleveClasse;k++){
+                        strcpy(E->TabClasse[i].TabEleve[j].nom, E->TabClasse[i].TabEleve[j+1].nom);
+                        strcpy(E->TabClasse[i].TabEleve[j].prenom, E->TabClasse[i].TabEleve[j+1].prenom);
+                        E->TabClasse[i].TabEleve[j].sexe=E->TabClasse[i].TabEleve[j+1].sexe;
+                        E->TabClasse[i].TabEleve[j].dateNaissance.tm_mday=E->TabClasse[i].TabEleve[j+1].dateNaissance.tm_mday;
+                        E->TabClasse[i].TabEleve[j].dateNaissance.tm_mon=E->TabClasse[i].TabEleve[j+1].dateNaissance.tm_mon;
+                        E->TabClasse[i].TabEleve[j].dateNaissance.tm_year=E->TabClasse[i].TabEleve[j+1].dateNaissance.tm_year;
+                    }
+                    suppr=1;
+                    strcpy(E->TabClasse[i].TabEleve[E->TabClasse[i].nbEleveClasse].nom, " ");
+                    strcpy(E->TabClasse[i].TabEleve[E->TabClasse[i].nbEleveClasse].prenom, " ");
+                    E->TabClasse[i].TabEleve[E->TabClasse[i].nbEleveClasse].sexe=' ';
+                    E->TabClasse[i].TabEleve[E->TabClasse[i].nbEleveClasse].dateNaissance.tm_mday=0;
+                    E->TabClasse[i].TabEleve[E->TabClasse[i].nbEleveClasse].dateNaissance.tm_mon=0;
+                    E->TabClasse[i].TabEleve[E->TabClasse[i].nbEleveClasse].dateNaissance.tm_year=0;
+                    E->TabClasse[i].nbEleveClasse-=1;
+                }
+                if(suppr==1){
+                    printf("\n*****L'eleve a bien ete supprime*****\n");
+                }
+            }
+        }
+    }
+    if(suppr!=1){
+        printf("\n***L'eleve n'a pas ete trouve***\n");
+    }
+}
+
+void RangerEcole(Ecole_t *E){
+    int i;
+    RangerClasses(E->TabClasse, E->nbClasse);
+    for(i=0;i<E->nbClasse;i++){
+        RangerEleves(E->TabClasse[i].TabEleve, E->TabClasse[i].nbEleveClasse);
+    }
+}
+/****************************************************************************************************/

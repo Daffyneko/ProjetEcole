@@ -21,6 +21,7 @@ typedef struct Eleve{
 void SaisirEleve(Eleve_t *E);
 void AfficherEleve(Eleve_t E);
 void ModifierEleve(Eleve_t *E);
+void RangerEleves(Eleve_t E[], int nbe);
 
 /****************************************************************************************************/
 

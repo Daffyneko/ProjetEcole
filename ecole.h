@@ -3,7 +3,7 @@
 #include "classe.h"
 
 
-//          ****        ecole.h        ****
+//                                              ****        ecole.h        ****
 
 
 #ifndef ECOLE_H
@@ -36,30 +36,21 @@ void AfficherEleveClasse(struct Ecole); // N'affiche les élèves que d'une seul
 
 int Recherche(char *A, char *B); // Fonction de recherche. Prends en paramètres deux chaines de caractères
 
-void Initialisation(struct Ecole *);
+void Initialisation(struct Ecole *); // Initialise une école à 0 (avec les valeurs max)
 
-/*Ecrit un tableau de classes de l'école dans un fichier csv appelé FichierEcole*/
-void Ecrire_Fichier_Classe(const char *FichierEcole, Ecole_t E);
+void EcrireEcole(struct Ecole); // Télécharge l'école depuis un fichier csv
 
+void LireEcole(struct Ecole *); // Sauvegarde l'école sur un fichier csv
 
-/*Lit un tableau de classes de l'école du fichier FichierEcole.csv*/
-void Lire_Fichier_Classe(Ecole_t *E);
+void EcrireClasse(struct Ecole); // Télécharge les classes depuis un fichier csv
 
+void LireClasse(struct Ecole *); // Sauvegarde les classes sur un fichier csv
 
-void FonctionSave(struct Ecole);
+void LireBinaire(struct Ecole *); // Lis dans un fichier illisible par l'humain
 
-void FonctionChargeEcole(struct Ecole *);
+void EcrireBinaire(struct Ecole *); // Sauvegarde dans un fichier illisible par l'humain
 
-void FonctionChargeClasse(struct Ecole *);
+void test(struct Ecole *);
 
-/******************************Daphné********************************/
-void RechercherEleve(Ecole_t E);
-
-int RechercherClasse(Ecole_t E);
-
-void AjouterClasse(Ecole_t *E, int position);
-
-void SupprimerEleve(Ecole_t *E);
-/********************************************************************/
 
 #endif // ECOLE_H

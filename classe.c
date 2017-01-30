@@ -108,4 +108,32 @@ void AffecterEleve(Eleve_t E, Classe_t *C){
     C->TabEleve[C->nbEleveClasse].dateNaissance.tm_year=E.dateNaissance.tm_year;
     C->nbEleveClasse++;
 }
+
+void RangerClasses(Classe_t C[], int nbe){
+    int i, permut=1;
+    Classe_t temp;
+    while(permut==1){
+        permut=0;
+        for(i=0;i<nbe;i++){
+            if(strcmp(C[i].niveau,C[i+1].niveau)>0){
+                permut=1;
+                /* COPIE E[i]-->temp */
+                strcpy(temp.niveau, C[i].niveau);
+                strcpy(temp.nomEnseignant, C[i].nomEnseignant);
+                temp.numClasse=C[i].numClasse;
+                temp.nbEleveClasse=C[i].nbEleveClasse;
+                /* COPIE E[i+1]-->E[i] */
+                strcpy(C[i].niveau, C[i+1].niveau);
+                strcpy(C[i].nomEnseignant, C[i+1].nomEnseignant);
+                C[i].numClasse=C[i+1].numClasse;
+                C[i].nbEleveClasse=C[i+1].nbEleveClasse;
+                /* COPIE temp-->E[i+1] */
+                strcpy(C[i+1].niveau, temp.niveau);
+                strcpy(C[i+1].nomEnseignant, temp.nomEnseignant);
+                C[i+1].numClasse=temp.numClasse;
+                C[i].nbEleveClasse=C[i+1].nbEleveClasse;
+            }
+        }
+    }
+}
 /****************************************************************************************************/

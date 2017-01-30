@@ -28,6 +28,7 @@ void ModifierClasse(Classe_t *C);
 
 /****************************Daphné******************************/
 void AffecterEleve(Eleve_t E, Classe_t *C);
+void RangerClasses(Classe_t C[], int nbe);
 /****************************************************************/
 
 #endif
