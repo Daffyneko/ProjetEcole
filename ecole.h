@@ -43,7 +43,7 @@ void Ecrire_Fichier_Classe(const char *FichierEcole, Ecole_t E);
 
 
 /*Lit un tableau de classes de l'école du fichier FichierEcole.csv*/
-void Lire_Fichier_Classe(const char *FichierEcole, Ecole_t *E);
+void Lire_Fichier_Classe(Ecole_t *E);
 
 
 void FonctionSave(struct Ecole);
