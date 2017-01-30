@@ -24,13 +24,6 @@ void AfficherClasse(Classe_t C);
 
 void ModifierClasse(Classe_t *C);
 
-
-
-/*Ecrit un tableau de classe dans un fichier csv appelé FichierEcole*/
-void Ecrire_Fichier_Classe(const char *FichierEcole, Classe_t *TabClasse, int nb);
-
-/*Lit un tableau de classe de l'ecole du fichier FichierEcole.csv*/
-void Lire_Fichier_Classe(const char *FichierEcole, Classe_t *TabClasse, int nb);
 /*LISTE CHAINEES*/
 
 /****************************Daphné******************************/
