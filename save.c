@@ -54,7 +54,7 @@ void LireEcole(struct Ecole *E) // Sauvegarde l'école sur un fichier csv
         strcpy(E->nomEcole, champ);
         champ=strtok(NULL,";");
         strcpy(E->nomDirecteur, champ);
-        champ=strtok(NULL,"");
+        champ=strtok(NULL,";");
         E->nbClasse=atoi(champ);
         champ=strtok(NULL,"");
         E->nbEleveTotal=atoi(champ);
