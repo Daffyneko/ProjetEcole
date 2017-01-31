@@ -11,8 +11,8 @@ void MenuEleve(Ecole_t *E){
     char nvelleclasse;
     Eleve_t eleve;
     do{
-        printf("\n*****Gestion des eleves*****\n");
-        printf("\nQue voulez-vous faire ?\n1 - Ajouter un eleve\n2 - Afficher les eleves\n3 - Modifier un eleve\n4 - Supprimer un eleve\n0 - Retourner au menu precedent\n");
+        printf("\n\t\t***** Gestion des eleves *****\n");
+        printf("\nQue voulez-vous faire ?\n\n\t1 - Ajouter un eleve\n\t2 - Afficher les eleves\n\t3 - Modifier un eleve\n\t4 - Supprimer un eleve\n\t0 - Retourner au menu precedent\n");
         scanf("%d",&choix);
         getchar();
         switch(choix){
@@ -25,7 +25,7 @@ void MenuEleve(Ecole_t *E){
                 AfficherEleve(eleve);
                 printf("\nListe des classes enregistrées : \n");
                 AfficherParametreClasse(*E);
-                printf("\n***Veuillez indiquer la classe a laquelle l'eleve sera affecte.***\n");
+                printf("\n*** Veuillez indiquer la classe a laquelle l'eleve sera affecte ***\n");
                 i=RechercherClasse(*E);
                 if(E->TabClasse[i].nbEleveClasse<25){
                         AffecterEleve(eleve, &E->TabClasse[i]);
@@ -45,7 +45,7 @@ void MenuEleve(Ecole_t *E){
                 Ecrire_Fichier_Classe(*E);
                 break;
             case 2 :
-                printf("\n***Affichage des eleves***\n");
+                printf("\n*** Affichage des eleves ***\n");
                 AfficherEleveTotal(*E);
                 break;
             case 3 :
@@ -53,7 +53,7 @@ void MenuEleve(Ecole_t *E){
                 Ecrire_Fichier_Classe(*E);
                 break;
             case 4 :
-                printf("\n***Suppression d'un eleve***\n");
+                printf("\n*** Suppression d'un eleve ***\n");
                 SupprimerEleve(E);
                 /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
@@ -67,15 +67,15 @@ void MenuClasse(Ecole_t *E){
     int choix=-1;
     int i;
     do{
-        printf("\n*****Gestion des classes*****\n");
-        printf("\nQue voulez-vous faire ?\n1 - Ajouter une classe\n2 - Modifier une classe\n3 - Afficher une classe\n4 - Afficher toutes les classes\n0 - Retourner au menu precedent\n");
+        printf("\n***** Gestion des classes *****\n");
+        printf("\nQue voulez-vous faire ?\n\n\t1 - Ajouter une classe\n\t2 - Modifier une classe\n\t3 - Afficher une classe\n\t4 - Afficher toutes les classes\n\t0 - Retourner au menu precedent\n");
         scanf("%d",&choix);
         getchar();
         switch(choix){
             default : break;
             case 0 : break;
             case 1 :
-                printf("\n\n*****Saisie d'une classe*****\n");
+                printf("\n\n***** Saisie d'une classe *****\n");
                 printf("\nListe des classes enregistrées : \n");
                 AfficherParametreClasse(*E);
                 AjouterClasse(E, E->nbClasse);
@@ -93,13 +93,13 @@ void MenuClasse(Ecole_t *E){
                 EcrireClasse(*E);
                 break;
             case 3 :
-                printf("\n\n*****Affichage d'une classe*****\n");
+                printf("\n\n***** Affichage d'une classe *****\n");
                 printf("\nListe des classes enregistrées : \n");
                 AfficherParametreClasse(*E);
                 ChoixClasseAfficher(*E);
                 break;
                 case 4 :
-                printf("\n\n*****Affichage de toutes les classes*****\n\n");
+                printf("\n\n***** Affichage de toutes les classes *****\n\n");
                 for(i=0;i<E->nbClasse;i++){
                         AfficherClasse(E->TabClasse[i]);
                         printf(" -------------------------------------------------------------\n");
@@ -113,15 +113,15 @@ void MenuClasse(Ecole_t *E){
 void MenuEcole(Ecole_t *E){
     int choix=-1;
     do{
-        printf("\n*****Gestion de l'ecole*****\n");
-        printf("\nQue voulez-vous faire ?\n1 - Modifier les informations de l'ecole\n2 - Afficher l'ecole\n3 - Enregistrer le back-up\n4 - Récupérer le back-up\n0 - Retourner au menu precedent\n");
+        printf("\n***** Gestion de l'ecole *****\n");
+        printf("\nQue voulez-vous faire ?\n\n\t1 - Modifier les informations de l'ecole\n\t2 - Afficher l'ecole\n\t3 - Enregistrer le back-up\n\t4 - Récupérer le back-up\n\t0 - Retourner au menu precedent\n");
         scanf("%d",&choix);
         getchar();
         switch(choix){
             default : break;
             case 0 : break;
             case 1 :
-                printf("\n\n*****Modification des informations de l'ecole*****\n");
+                printf("\n\n***** Modification des informations de l'ecole *****\n");
                 ModifierEcole(E);
                 EcrireEcole(*E);
                 break;
@@ -129,15 +129,15 @@ void MenuEcole(Ecole_t *E){
                 /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
                 }*/
-                printf("\n\n*****Affichage de l'ecole*****\n");
+                printf("\n\n***** Affichage de l'ecole *****\n");
                 AfficherEcole(*E);
                 break;
         case 3 :
-                printf("\n\n*****Enregistrement du back-up*****\n");
+                printf("\n\n***** Enregistrement du back-up *****\n");
                 EcrireBinaire(E);
                 break;
         case 4 :
-                printf("\n\n*****Récupération du back-up*****\n");
+                printf("\n\n***** Récupération du back-up *****\n");
                 LireBinaire(E);
                 break;
         }
