@@ -21,7 +21,7 @@ void MenuEleve(Ecole_t *E){
             case 1 :
                 SaisirEleve(&eleve);
                 E->nbEleveTotal++;
-                printf("\n\nVous avez saisi les informations suivantes : ");
+                printf("\n\nVous avez saisi les informations suivantes : \n");
                 AfficherEleve(eleve);
                 printf("\n***Veuillez indiquer la classe a laquelle l'eleve sera affecte.***\n");
                 i=RechercherClasse(*E);
@@ -37,13 +37,12 @@ void MenuEleve(Ecole_t *E){
                                 printf("\nOperation annulee.");
                         }
                 }
-                if(E->nbClasse>1 && E->nbEleveTotal){
+                /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
-                }
+                }*/
                 break;
             case 2 :
                 printf("\n***Affichage des eleves***\n");
-                printf("\n|Nom                           |Prenom                        |Sexe|Date de naissance|\n");
                 AfficherEleveTotal(*E);
                 break;
             case 3 :
@@ -52,9 +51,9 @@ void MenuEleve(Ecole_t *E){
             case 4 :
                 printf("\n***Suppression d'un eleve***\n");
                 SupprimerEleve(E);
-                if(E->nbClasse>1 && E->nbEleveTotal){
+                /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
-                }
+                }*/
                 break;
         }
     }while(choix!=0);
@@ -73,9 +72,9 @@ void MenuClasse(Ecole_t *E){
             case 1 :
                 printf("\n\n*****Saisie d'une classe*****\n");
                 AjouterClasse(E, E->nbClasse);
-                if(E->nbClasse>1 && E->nbEleveTotal){
+                /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
-                }
+                }*/
                 break;
             case 2 :
                 //Modification d'une classe
@@ -104,9 +103,9 @@ void MenuEcole(Ecole_t *E){
                 ModifierEcole(E);
                 break;
             case 2 :
-                if(E->nbClasse>1 && E->nbEleveTotal){
+                /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
-                }
+                }*/
                 printf("\n\n*****Affichage de l'ecole*****\n");
                 AfficherEcole(*E);
                 break;
