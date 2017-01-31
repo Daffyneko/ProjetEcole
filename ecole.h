@@ -56,7 +56,7 @@ void Ecrire_Fichier_Classe(Ecole_t E); // Sauvegarde la structure élève dans u
 
 
 /******************************Daphne***************************/
-void RechercherEleve(Ecole_t E);
+void RechercherEleve(Ecole_t *E);
 
 int RechercherClasse(Ecole_t E);
 
