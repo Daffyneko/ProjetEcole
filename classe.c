@@ -243,7 +243,6 @@ void AffecterEleve(Eleve_t E, Classe_t *C){
     C->TabEleve[C->nbEleveClasse].dateNaissance.tm_mday=E.dateNaissance.tm_mday;
     C->TabEleve[C->nbEleveClasse].dateNaissance.tm_mon=E.dateNaissance.tm_mon;
     C->TabEleve[C->nbEleveClasse].dateNaissance.tm_year=E.dateNaissance.tm_year;
-    C->nbEleveClasse++;
 }
 
 void RangerClasses(Classe_t C[], int nbe){
