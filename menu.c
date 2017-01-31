@@ -92,7 +92,7 @@ void MenuEcole(Ecole_t *E){
     int choix=-1;
     do{
         printf("\n*****Gestion de l'ecole*****\n");
-        printf("\nQue voulez-vous faire ?\n1 - Modifier les informations de l'ecole\n2 - Afficher l'ecole\n0 - Retourner au menu precedent\n");
+        printf("\nQue voulez-vous faire ?\n1 - Modifier les informations de l'ecole\n2 - Afficher l'ecole\n3 - Enregistrer le back-up\n4 - Récupérer le back-up\n0 - Retourner au menu precedent\n");
         scanf("%d",&choix);
         getchar();
         switch(choix){
@@ -108,6 +108,14 @@ void MenuEcole(Ecole_t *E){
                 }*/
                 printf("\n\n*****Affichage de l'ecole*****\n");
                 AfficherEcole(*E);
+                break;
+        case 3 :
+                printf("\n\n*****Enregistrement du back-up*****\n");
+                EcrireBinaire(E);
+                break;
+        case 4 :
+                printf("\n\n*****Récupération du back-up*****\n");
+                LireBinaire(E);
                 break;
         }
     }while(choix!=0);
