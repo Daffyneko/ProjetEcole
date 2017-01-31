@@ -12,7 +12,12 @@ void MenuEleve(Ecole_t *E){
     Eleve_t eleve;
     do{
         printf("\n\t\t***** Gestion des eleves *****\n");
-        printf("\nQue voulez-vous faire ?\n\n\t1 - Ajouter un eleve\n\t2 - Afficher les eleves\n\t3 - Modifier un eleve\n\t4 - Supprimer un eleve\n\t0 - Retourner au menu precedent\n");
+        printf("\nQue voulez-vous faire ?\n\n");
+        printf("\t1 - Ajouter un eleve\n");
+        printf("\t2 - Afficher les eleves\n");
+        printf("\t3 - Modifier un eleve\n");
+        printf("\t4 - Supprimer un eleve\n");
+        printf("\t0 - Retourner au menu precedent\n");
         scanf("%d",&choix);
         getchar();
         switch(choix){
@@ -22,14 +27,13 @@ void MenuEleve(Ecole_t *E){
                 SaisirEleve(&eleve);
                 printf("\n\nVous avez saisi les informations suivantes : \n");
                 AfficherEleve(eleve);
-                printf("\nListe des classes enregistrées : \n");
+                printf("\nListe des classes enregistrees : \n");
                 AfficherParametreClasse(*E);
                 printf("\n*** Veuillez indiquer la classe a laquelle l'eleve sera affecte ***\n");
                 i=RechercherClasse(*E);
                 if(E->TabClasse[i].nbEleveClasse<25){
                         AffecterEleve(eleve, &E->TabClasse[i]);
                         E->nbEleveTotal++;
-                        E->TabClasse[i].nbEleveClasse++;
                         EcrireEcole(*E);
                         EcrireClasse(*E);
                         Ecrire_Fichier_Classe(*E);
@@ -134,7 +138,7 @@ void MenuEcole(Ecole_t *E){
     int choix=-1;
     do{
         printf("\n***** Gestion de l'ecole *****\n");
-        printf("\nQue voulez-vous faire ?\n\n\t1 - Modifier les informations de l'ecole\n\t2 - Afficher l'ecole\n\t3 - Enregistrer le back-up\n\t4 - Récupérer le back-up\n\t0 - Retourner au menu precedent\n");
+        printf("\nQue voulez-vous faire ?\n\n\t1 - Modifier les informations de l'ecole\n\t2 - Afficher l'ecole \n\t0 - Retourner au menu precedent\n");
         scanf("%d",&choix);
         getchar();
         switch(choix){
@@ -154,15 +158,54 @@ void MenuEcole(Ecole_t *E){
                 printf("\n\n***** Affichage de l'ecole *****\n");
                 AfficherEcole(*E);
                 break;
-        case 3 :
-                printf("\n\n***** Enregistrement du back-up *****\n");
-                EcrireBinaire(E);
-                break;
-        case 4 :
-                printf("\n\n***** Récupération du back-up *****\n");
-                LireBinaire(E);
-                break;
         }
     }while(choix!=0);
 }
+
 /****************************************************************************************************/
+
+
+// ------------------------------------------------------- Cyril --------------------------------------------------------- //
+
+void MenuBackup(struct Ecole *E)
+{
+    int choix=-1;
+    char choixDeux;
+    printf("\n\t1- Sauvegarder les donnees de l'ecole");
+    printf("\n\t2- Chargement les donnees de l'ecole");
+    printf("\n\t1- Retour\n");
+    printf("Choix: ");
+    scanf("%d", &choix);
+    getchar();
+    switch (choix)
+    {
+        case 0: return;
+            break;
+        case 1: printf("!! Attention, un enregistrement sur ce document sera definitif. En cas d'erreur, un retour en arriere ne sera pas possible !!\n");
+                printf("Etes vous sur de vouloir poursuivre ? (o/n)");
+                do
+                {   printf("Votre choix:");
+                    scanf("%c", &choixDeux);
+                    getchar();
+                }while(!(choixDeux=='o' || choixDeux=='n'));
+                EcrireBinaire(E);
+            break;
+        case 2: LireBinaire(E);
+                EcrireEcole(*E);
+                EcrireClasse(*E);
+                Ecrire_Fichier_Classe(*E);
+            break;
+    }
+}
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------- //
+
+
+
+
+
+
+
+
