@@ -20,7 +20,6 @@ void MenuEleve(Ecole_t *E){
             case 0 : break;
             case 1 :
                 SaisirEleve(&eleve);
-                E->nbEleveTotal++;
                 printf("\n\nVous avez saisi les informations suivantes : \n");
                 AfficherEleve(eleve);
                 printf("\nListe des classes enregistrées : \n");
@@ -29,12 +28,21 @@ void MenuEleve(Ecole_t *E){
                 i=RechercherClasse(*E);
                 if(E->TabClasse[i].nbEleveClasse<25){
                         AffecterEleve(eleve, &E->TabClasse[i]);
+                        E->nbEleveTotal++;
+                        EcrireEcole(*E);
+                        EcrireClasse(*E);
+                        Ecrire_Fichier_Classe(*E);
                 }else{
                         printf("\nAttention ! Cette classe est deja complete. Voulez-vous creer une nouvelle classe ?(o/n) ");
                         scanf("%c", &nvelleclasse);
                         getchar();
                         if(nvelleclasse=='o'){
                                 AjouterClasse(E, E->nbClasse);
+                                AffecterEleve(eleve, &E->TabClasse[i]);
+                                E->nbEleveTotal++;
+                                EcrireEcole(*E);
+                                EcrireClasse(*E);
+                                Ecrire_Fichier_Classe(*E);
                         }else{
                                 printf("\nOperation annulee.");
                         }
@@ -42,6 +50,8 @@ void MenuEleve(Ecole_t *E){
                 /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
                 }*/
+                EcrireEcole(*E);
+                EcrireClasse(*E);
                 Ecrire_Fichier_Classe(*E);
                 break;
             case 2 :
@@ -50,6 +60,8 @@ void MenuEleve(Ecole_t *E){
                 break;
             case 3 :
                 RechercherEleve(E);
+                EcrireEcole(*E);
+                EcrireClasse(*E);
                 Ecrire_Fichier_Classe(*E);
                 break;
             case 4 :
@@ -58,6 +70,8 @@ void MenuEleve(Ecole_t *E){
                 /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
                 }*/
+                EcrireEcole(*E);
+                EcrireClasse(*E);
                 Ecrire_Fichier_Classe(*E);
                 break;
         }
@@ -82,7 +96,9 @@ void MenuClasse(Ecole_t *E){
                 /*if(E->nbClasse>1 && E->nbEleveTotal){
                         RangerEcole(E);
                 }*/
+                EcrireEcole(*E);
                 EcrireClasse(*E);
+                Ecrire_Fichier_Classe(*E);
                 break;
             case 2 :
                 //Modification d'une classe
@@ -90,7 +106,9 @@ void MenuClasse(Ecole_t *E){
                 AfficherParametreClasse(*E);
                 i=RechercherClasse(*E);
                 ModifierClasse(&E->TabClasse[i]);
+                EcrireEcole(*E);
                 EcrireClasse(*E);
+                Ecrire_Fichier_Classe(*E);
                 break;
             case 3 :
                 printf("\n\n***** Affichage d'une classe *****\n");
@@ -124,6 +142,8 @@ void MenuEcole(Ecole_t *E){
                 printf("\n\n***** Modification des informations de l'ecole *****\n");
                 ModifierEcole(E);
                 EcrireEcole(*E);
+                EcrireClasse(*E);
+                Ecrire_Fichier_Classe(*E);
                 break;
             case 2 :
                 /*if(E->nbClasse>1 && E->nbEleveTotal){
