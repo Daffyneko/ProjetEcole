@@ -26,13 +26,13 @@ void AfficherEcole(struct Ecole); // Affiche les parmètres de l'école
 
 void SaisirEcole(struct Ecole *); // Saisi les paramètres de l'école
 
-void ModifierEcole(struct Ecole *);
+void ModifierEcole(struct Ecole *); // Modifie les paramètres de l'école
 
 void AfficherParametreClasse(struct Ecole); // Affiche les paramètres de toutes les classes (Niveau, numéro, instit... )
 
-void AfficherEleveTotal(struct Ecole); // Affiche TOUT les élèves de l'école
+void ChoixClasseAfficher(struct Ecole E); // Affiche les élèves de la classe choisie
 
-void AfficherEleveClasse(struct Ecole); // N'affiche les élèves que d'une seule classe
+void AfficherEleveTotal(struct Ecole); // Affiche TOUT les élèves de l'école
 
 int Recherche(char *A, char *B); // Fonction de recherche. Prends en paramètres deux chaines de caractères
 
@@ -50,7 +50,10 @@ void LireBinaire(struct Ecole *); // Lis dans un fichier illisible par l'humain
 
 void EcrireBinaire(struct Ecole *); // Sauvegarde dans un fichier illisible par l'humain
 
-void test(struct Ecole *);
+void Lire_Fichier_Classe(struct Ecole *); // Lis la liste d'élève et l'enregistre dans la structure
+
+void Ecrire_Fichier_Classe(Ecole_t E); // Sauvegarde la structure élève dans un fichier 
+
 
 /******************************Daphne***************************/
 void RechercherEleve(Ecole_t E);
