@@ -24,7 +24,7 @@ void EcrireEcole(struct Ecole E) // Télécharge l'école depuis un fichier csv
     // La première ligne di fichier pour faciliter la lecture d'un être humain
     fprintf(ptr_sauvegarde,"Nom de l'ecole;Nom du directeur;Nombre de classe Total\n");
     // On enregistre les structures dans notre fichier
-    fprintf(ptr_sauvegarde,"%s;%s;%d;%d", E.nomEcole,E.nomDirecteur,E.nbClasse);
+    fprintf(ptr_sauvegarde,"%s;%s;%d;%d", E.nomEcole,E.nomDirecteur,E.nbClasse,E.nbEleveTotal);
 
     fclose(ptr_sauvegarde);
 }
