@@ -17,7 +17,7 @@ void SaisirEleve(Eleve_t *E){
     do{
         printf("\nVeuillez entrer le sexe de l'eleve (f pour fille ou g pour garçon) : ");
         fscanf(stdin,"%c", &sexe);
-    }while(sexe!='g' && sexe!='f');
+    }while(sexe!='M' && sexe!='F');
     E->sexe=sexe;
     printf("\nVeuillez entrer la date de naissance de l'eleve (jj/mm/aaaa) : ");
     scanf("%d/%d/%d", &j, &m, &a);
