@@ -12,7 +12,7 @@
 typedef struct Eleve{
 	char nom[MAX]; // Nom de l'eleve
 	char prenom[MAX]; // Prenom de l'eleve
-	char sexe; // Sexe: juste un char pour mettre "m" ou "f"
+	char sexe; // Sexe: juste un char pour mettre "M" ou "F"
 	struct tm dateNaissance; // Date de naissance. Utilisation de la structure tm. Ajout de la biblio <time.h>
 //	struct Parent renseignement; // Renseignement sur les parents numero nom et adresse
 //	struct Bulletin note; // Bulletins de notes. notes matieres retard abscences...
