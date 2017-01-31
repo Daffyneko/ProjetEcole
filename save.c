@@ -9,24 +9,27 @@
 
 
 
-void FonctionSave(struct Ecole E)// écrit les données nom directeur, nom d'école nombre d'élèves total, nombre d'élève par classe et nombre Classes total
+void EcrireEcole(struct Ecole E) // Télécharge l'école depuis un fichier csv
 {
     FILE *ptr_sauvegarde;
     ptr_sauvegarde=fopen("ecole.csv", "w");
 
     if(!ptr_sauvegarde)
     {
+        printf("ecole.csv\n");
         perror("Impossible d'ouvrir le fichier ecole.csv\n");
         exit(-1);
     }
-
-
-
+    // La première ligne di fichier pour faciliter la lecture d'un être humain
+    fprintf(ptr_sauvegarde,"Nom de l'ecole ; Nom du directeur ;  Nombre d'eleve total ; Nombre d'eleve CP ; Nombre d'élève CE1 ; Nombre d'eleve CE2 ; Nombre d'eleve CM1 ; Nombre d'eleve CM2 ; Nombre de classe Total\n");
+    // On enregistre les structures dans notre fichier
+    fprintf(ptr_sauvegarde,"%s;%s;%d;%d;%d;%d;%d;%d;%d", E.nomEcole,E.nomDirecteur,E.nbEleveTotal,E.nbEleveNiveau[0],E.nbEleveNiveau[1],
+            E.nbEleveNiveau[2],E.nbEleveNiveau[3],E.nbEleveNiveau[4],E.nbClasse);
 
     fclose(ptr_sauvegarde);
 }
 
-void FonctionChargeEcole(struct Ecole *E)
+void LireEcole(struct Ecole *E) // Sauvegarde l'école sur un fichier csv
 {
     char ligne[500];
     char poubelle[500];
@@ -37,6 +40,7 @@ void FonctionChargeEcole(struct Ecole *E)
 
     if(!ptr_sauvegarde)
     {
+        printf("ecole.csv\n");
         perror("Impossible d'ouvrir le fichier ecole.csv\n");
         exit(-1);
     }
@@ -51,11 +55,65 @@ fgets(poubelle, sizeof(ligne), ptr_sauvegarde); // Pour sauter la première lign
         champ=strtok(NULL,";");
         strcpy(E->nomDirecteur, champ);
         champ=strtok(NULL,"");
-        sscanf(champ,"%d ; %d ; %d ; %d ; %d ; %d ; %d",&E->nbEleveTotal,&E->nbEleveNiveau[0],&E->nbEleveNiveau[1],&E->nbEleveNiveau[2],&E->nbEleveNiveau[3],&E->nbEleveNiveau[4],&E->nbClasse);
+        sscanf(champ,"%d;%d;%d;%d;%d;%d;%d",&E->nbEleveTotal,&E->nbEleveNiveau[0],&E->nbEleveNiveau[1],&E->nbEleveNiveau[2],&E->nbEleveNiveau[3],&E->nbEleveNiveau[4],&E->nbClasse);
     }
     fclose(ptr_sauvegarde);
 }
 
+void EcireClasse(struct Ecole E) // Télécharge les classes depuis un fichier csv
+{
+    int i;
+    FILE *ptr_sauvegarde;
+    ptr_sauvegarde=fopen("classe.csv", "r");
+
+    if(!ptr_sauvegarde)
+    {
+        printf("classe.csv\n");
+        perror("Impossible d'ouvrir le fichier classe.csv\n");
+        exit(-1);
+    }
+    fprintf(ptr_sauvegarde,"Niveau ; Numero de classe ; Nom de l'enseigant; Nombre d'eleve dans la classe");
+    for(i=0; i<5; i++)
+        fprintf(ptr_sauvegarde,"\n%s;%d;%s;%d ", E.TabClasse[i].niveau, E.TabClasse[i].numClasse, E.TabClasse[i].nomEnseignant, E.TabClasse[i].nbEleveClasse);
+}
+
+void LireClasse(struct Ecole *E) // Sauvegarde les classes sur un fichier csv
+{
+    char ligne[500];
+    char poubelle[500];
+    char *champ;
+    int i=0;
+
+    FILE *ptr_sauvegarde;
+    ptr_sauvegarde=fopen("classe.csv", "r");
+
+    if(!ptr_sauvegarde)
+    {
+        printf("classe.csv\n");
+        perror("Impossible d'ouvrir le fichier ecole.csv\n");
+        exit(-1);
+    }
+
+fgets(poubelle, sizeof(ligne), ptr_sauvegarde); // Pour sauter la première ligne qui est tout simplement le détail de ce que représente chaque colonnes
+
+    while(!feof(ptr_sauvegarde))
+    {
+        fgets(ligne, sizeof(ligne), ptr_sauvegarde); // Lis la ligne
+
+        champ=strtok(ligne,";");
+        strcpy(E->TabClasse[i].niveau, champ);
+
+        champ=strtok(NULL,";");
+        E->TabClasse[i].numClasse=atoi(champ);
+
+        champ=strtok(NULL,";");
+        strcpy(E->TabClasse[i].nomEnseignant, champ);
+
+        champ=strtok(NULL,"");
+        E->TabClasse[i].nbEleveClasse=atoi(champ);
+        i++;
+    }
+}
 
 void Lire_Fichier_Classe(struct Ecole *E)
 {    int i, j;
@@ -168,4 +226,14 @@ void Ecrire_Fichier_Classe(Ecole_t E)
  
     fclose(ptr_fichier); // fermeture du fichier
 }
+
+
+
+
+
+
+
+
+
+
 
