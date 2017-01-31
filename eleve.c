@@ -22,12 +22,16 @@ void SaisirEleve(Eleve_t *E){
     printf("\nVeuillez entrer la date de naissance de l'eleve (jj/mm/aaaa) : ");
     scanf("%d/%d/%d", &j, &m, &a);
     E->dateNaissance.tm_mday=j;
-    E->dateNaissance.tm_mon=m-1;
-    E->dateNaissance.tm_year=a-1900;
+    E->dateNaissance.tm_mon=m;
+    E->dateNaissance.tm_year=a;
     printf("\n***Eleve enregistre***\n");
 }
 void AfficherEleve(Eleve_t E){
     int longueur, i;
+
+    /*printf("\n***************************************\n");
+    printf("Nom : %s\tPrenom : %s\nSexe : %c\tDate de naissance : %d/%d/%d\n", E.nom, E.prenom, E.sexe, E.dateNaissance.tm_mday, E.dateNaissance.tm_mon, E.dateNaissance.tm_year);
+    printf("\n***************************************\n");*/
     longueur=strlen(E.nom);
     printf("|%s",E.nom);
     for(i=0;i<30-longueur;i++){
@@ -39,8 +43,10 @@ void AfficherEleve(Eleve_t E){
         printf(" ");
     }
     printf("| %c  ",E.sexe);
-    printf("| %d/%d/%d       |\n", E.dateNaissance.tm_mday, E.dateNaissance.tm_mon+1, E.dateNaissance.tm_year+1900);
+    printf("| %d/%d/%d       |\n", E.dateNaissance.tm_mday, E.dateNaissance.tm_mon, E.dateNaissance.tm_year);
+
 }
+
 void ModifierEleve(Eleve_t *E){
     int choix=-1;
     char sexe;
@@ -74,8 +80,8 @@ void ModifierEleve(Eleve_t *E){
             printf("\nVeuillez entrer la date de naissance de l'eleve (jj/mm/aaaa) : ");
             scanf("%d/%d/%d", &j, &m, &a);
             E->dateNaissance.tm_mday=j;
-            E->dateNaissance.tm_mon=m-1;
-            E->dateNaissance.tm_year=a-1900;
+            E->dateNaissance.tm_mon=m;
+            E->dateNaissance.tm_year=a;
             printf("\n***Modification effectuee***\n");
             break;
     }
