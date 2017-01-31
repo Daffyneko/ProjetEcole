@@ -34,22 +34,22 @@ void AfficherEleve(Eleve_t E){
     printf("\n***************************************\n");*/
     longueur=strlen(E.nom);
     printf("|%s",E.nom);
-    for(i=0;i<30-longueur;i++){
+    for(i=0;i<20-longueur;i++){
         printf(" ");
     }
     longueur=strlen(E.prenom);
     printf("|%s",E.prenom);
-    for(i=0;i<30-longueur;i++){
+    for(i=0;i<20-longueur;i++){
         printf(" ");
     }
     printf("| %c  ",E.sexe);
-    printf("| %d/%d/%d       |\n", E.dateNaissance.tm_mday, E.dateNaissance.tm_mon, E.dateNaissance.tm_year);
+    printf("| %.2d/%.2d/%d       \n", E.dateNaissance.tm_mday, E.dateNaissance.tm_mon, E.dateNaissance.tm_year);
 
 }
 
 void ModifierEleve(Eleve_t *E){
     int choix=-1;
-    char sexe;
+    char sexe, modif[30];
     int j, m, a;
     printf("Veuillez saisir le champ a modifier : \n1 - Nom\n2 - Prenom\n3 - Sexe\n4 - Date de naissance\n0 - Annuler\n");
     scanf("%d",&choix);
@@ -60,12 +60,14 @@ void ModifierEleve(Eleve_t *E){
             break;
         case 1 :
             printf("\nVeuillez entrer le nom de l'eleve : ");
-            fscanf(stdin,"%s", E->nom);
+            fscanf(stdin,"%s", modif);
+            strcpy(E->nom, modif);
             printf("\n***Modification effectuee***\n");
             break;
         case 2 :
             printf("\nVeuillez entrer le prenom de l'eleve : ");
-            fscanf(stdin,"%s", E->prenom);
+            fscanf(stdin,"%s", modif);
+            strcpy(E->prenom, modif);
             printf("\n***Modification effectuee***\n");
             break;
         case 3 :
