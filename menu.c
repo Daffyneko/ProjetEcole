@@ -63,7 +63,7 @@ void MenuClasse(Ecole_t *E){
     int i;
     do{
         printf("\n*****Gestion des classes*****\n");
-        printf("\nQue voulez-vous faire ?\n1 - Ajouter une classe\n2 - Modifier une classe\n3 - Afficher une classe\n0 - Retourner au menu precedent\n");
+        printf("\nQue voulez-vous faire ?\n1 - Ajouter une classe\n2 - Modifier une classe\n3 - Afficher une classe\n4 - Afficher toutes les classes\n0 - Retourner au menu precedent\n");
         scanf("%d",&choix);
         getchar();
         switch(choix){
@@ -84,6 +84,16 @@ void MenuClasse(Ecole_t *E){
             case 3 :
                 printf("\n\n*****Affichage d'une classe*****\n");
                 ChoixClasseAfficher(*E);
+                break;
+                case 4 :
+                printf("\n\n*****Affichage de toutes les classes*****\n");
+                for(i=0;i<E->nbClasse;i++){
+                        printf("\n-----------------------------------------------------------\n");
+                        AfficherClasse(E->TabClasse[i]);
+                        printf("\n-----------------------------------------------------------\n");
+                        AfficherEleveClasse(E->TabClasse[i]);
+                        printf("\n-----------------------------------------------------------\n");
+                }
                 break;
         }
     }while(choix!=0);
