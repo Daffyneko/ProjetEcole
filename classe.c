@@ -219,7 +219,7 @@ void Afficher_Classe(Classe_t *premier)
 
 }
 
-/***********************************************Daphné***********************************************/
+/***********************************************Daphne***********************************************/
 void AffecterEleve(Eleve_t E, Classe_t *C){
     strcpy(C->TabEleve[C->nbEleveClasse].nom,E.nom);
     strcpy(C->TabEleve[C->nbEleveClasse].prenom,E.prenom);
