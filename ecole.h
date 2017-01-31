@@ -66,4 +66,5 @@ void RangerEcole(Ecole_t *E);
 
 
 
+
 #endif // ECOLE_H
