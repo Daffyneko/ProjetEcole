@@ -205,7 +205,7 @@ void Initialisation(struct Ecole *E)
 
 
  /***********************************************Daphne***********************************************/
-void RechercherEleve(Ecole_t E){
+void RechercherEleve(Ecole_t *E){
     char recherche[MAX];//le mot a rechercher
     int trouve, modifie;
     int i, j;
@@ -213,11 +213,11 @@ void RechercherEleve(Ecole_t E){
     fscanf(stdin,"%s",recherche);
     getchar();
     modifie=0;
-    for(i=0;i<E.nbClasse;i++){
-        for(j=0;j<E.TabClasse[i].nbEleveClasse;j++){
-            trouve=Recherche(E.TabClasse[i].TabEleve[j].nom, recherche);
+    for(i=0;i<E->nbClasse;i++){
+        for(j=0;j<E->TabClasse[i].nbEleveClasse;j++){
+            trouve=Recherche(E->TabClasse[i].TabEleve[j].nom, recherche);
             if(trouve==0){
-                ModifierEleve(&E.TabClasse[i].TabEleve[j]);
+                ModifierEleve(&E->TabClasse[i].TabEleve[j]);
                 modifie=1;
             }
         }
