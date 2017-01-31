@@ -15,7 +15,7 @@ void SaisirEleve(Eleve_t *E){
     fscanf(stdin,"%s", E->prenom);
     getchar();
     do{
-        printf("\nVeuillez entrer le sexe de l'eleve (f pour fille ou g pour garçon) : ");
+        printf("\nVeuillez entrer le sexe de l'eleve (F pour fille ou M pour garçon) : ");
         fscanf(stdin,"%c", &sexe);
     }while(sexe!='M' && sexe!='F');
     E->sexe=sexe;
