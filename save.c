@@ -123,7 +123,7 @@ void Lire_Fichier_Classe(struct Ecole *E)
     char ligne[300];
     FILE *ptr_fichier;
 //    printf("test 1");
-    ptr_fichier = fopen("FichierClasse10.csv", "r"); // ouverture du fichier en mode lecture
+    ptr_fichier = fopen("eleve.csv", "r"); // ouverture du fichier en mode lecture
 
     if(!ptr_fichier) // si l'ouverture se passe mal
     {
@@ -132,40 +132,22 @@ void Lire_Fichier_Classe(struct Ecole *E)
     }
 
 // Pour sauter la première ligne qui est tout simplement le détail de ce que représente chaque colonnes
-    for (i=0; i<7; i++)
+    for (i=0; i<E->nbClasse; i++)
 
- //  printf("test %d\n", i);
-    {//fgets(poubelle, sizeof(ligne), ptr_fichier);
-  /* {    fgets(ligne, 300, ptr_fichier); // lire la ligne
 
-        champ= strtok(ligne, ";"); // mettre dans champ les éléments de ligne jusqu'au prochain ';'
-        strcpy(E->TabClasse[i].niveau, champ); // copier champ dans le niveau de la classe
-        printf("%s", champ);
+   {fgets(poubelle, sizeof(poubelle), ptr_fichier);// on ne prend pas en compte la première ligne
 
-        champ=strtok(NULL, ";"); // mettre dans champ les éléments de ligne jusqu'au prochain ';'
-        E->TabClasse[i].numClasse=atoi(champ);//transformer champ en nombre et le copier dans le numero de la classe
-        printf("%s", champ);
 
-        champ=strtok(NULL, ";");
-        strcpy(E->TabClasse[i].nomEnseignant, champ); // copier champ dans le niveau de la classe
-        printf("%s", champ);
-
-        champ = strtok(NULL, ";");// mettre dans champ les éléments de ligne jusqu'au prochain ';'
-        E->TabClasse[i].nbEleveClasse =atoi(champ); //transformer champ en nombre et le copier dans le nombre d'élèves dans la classe
-        printf("%s", champ);
-*/
-       for (j=0; j<10; j++)
+       for (j=0; j<E->TabClasse[i].nbEleveClasse; j++)
         {
-       // printf("test %d\n", j);
+   
       fgets(ligne, 300, ptr_fichier); // lire la ligne
 
-        printf ("test3 \n");
+      
         champ = strtok(ligne, ";");// mettre dans champ les élément de ligne jusqu'au prochain ';'
-        printf ("test 4 \n");
-
         strcpy(E->TabClasse[i].TabEleve[j].nom, ligne); //copier champ dans le nom de l'élèvé
-        printf ("test 5\n");
-        printf("%s", champ);
+
+ 
 
         champ = strtok(NULL, ";");// mettre dans champ les éléments de ligne jusqu'au prochain ';'
         strcpy(E->TabClasse[i].TabEleve[j].prenom, champ); //copier champ dans le prénom de l'élèvé
@@ -183,52 +165,45 @@ void Lire_Fichier_Classe(struct Ecole *E)
         sscanf(champ,"%d/%d/%d", &E->TabClasse[i].TabEleve[j].dateNaissance.tm_mday,
         &E->TabClasse[i].TabEleve[j].dateNaissance.tm_mon, &E->TabClasse[i].TabEleve[j].dateNaissance.tm_year);
         printf("%s", champ);
-        /*    printf(" ------la date est %d/%d/%d----", E->TabClasse[i].TabEleve[j].dateNaissance.tm_mday,
-                   E->TabClasse[i].TabEleve[j].dateNaissance.tm_mon, E->TabClasse[i].TabEleve[j].dateNaissance.tm_year);*/
-
         }
+        fgets(poubelle, sizeof(poubelle), ptr_fichier);// on saute une ligne avant la classe suivante
     }
 }
 
-
-/*Ecrit un tableau de classe dans un fichier*/
 /*Ecrit un tableau de classe dans un fichier*/
 
 void Ecrire_Fichier_Classe(Ecole_t E)
 { int i,j;   // variables de boucle
-
+printf("kkkkk");
     FILE *ptr_fichier; // pointeur de fichier
 
-    ptr_fichier =fopen("Test5.csv", "w"); // ouverture du fichier en mode écriture
+    ptr_fichier =fopen("Test6.csv", "w"); // ouverture du fichier en mode écriture
 
     if(!ptr_fichier) // si l'ouverture se passe mal
     {
         perror("erreur ouverture du fichier");
         exit(EXIT_FAILURE);
     }
-
-   for(i=0; i<7; i++) // on parcourt le tableau de classes
+//printf ("TEST0---");
+   for(i=0; i<E.nbClasse; i++) // on parcourt le tableau de classes
     {
         // écriture du niveau de la classe, du numéro, du nom de l'enseignant et du nombre d'élèves
-    //  fprintf(ptr_fichier, " %s; %d; %s;", E.TabClasse[i].niveau, E.TabClasse[i].numClasse, E.TabClasse[i].nomEnseignant);
-      //  fprintf(ptr_fichier, "\n");
+     fprintf(ptr_fichier, "%s;%d;%s", E.TabClasse[i].niveau, E.TabClasse[i].numClasse, E.TabClasse[i].nomEnseignant);
+     fprintf(ptr_fichier, "\n");
 
-       for(j=0; j<10; j++) // pour chaque classe on parcourt ses élèves
+       for(j=0; j<E.TabClasse[i].nbEleveClasse; j++) // pour chaque classe on parcourt ses élèves
         {
           // écriture du prénom, nom, sexe et date de naissance
-        fprintf(ptr_fichier, "%s; %s; %c; %d/%d/%d", E.TabClasse[i].TabEleve[j].nom, E.TabClasse[i].TabEleve[j].prenom, E.TabClasse[i].TabEleve[j].sexe,
+        fprintf(ptr_fichier, "%s;%s;%c;%d/%d/%d", E.TabClasse[i].TabEleve[j].nom, E.TabClasse[i].TabEleve[j].prenom, E.TabClasse[i].TabEleve[j].sexe,
         E.TabClasse[i].TabEleve[j].dateNaissance.tm_mday,E.TabClasse[i].TabEleve[j].dateNaissance.tm_mon, E.TabClasse[i].TabEleve[j].dateNaissance.tm_year);
         fprintf(ptr_fichier,"\n");
 
         }
-        fprintf(ptr_fichier,"\n"); // passage à la ligne pour inscrire la classe suivante (dans le tableau en paramètre)
+     fprintf(ptr_fichier,"\n"); // passage à la ligne pour inscrire la classe suivante (dans le tableau en paramètre)
    }
- 
+   
     fclose(ptr_fichier); // fermeture du fichier
 }
-
-
-
 
 
 
