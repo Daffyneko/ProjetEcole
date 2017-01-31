@@ -52,8 +52,7 @@ void EcrireBinaire(struct Ecole *); // Sauvegarde dans un fichier illisible par 
 
 void Lire_Fichier_Classe(struct Ecole *); // Lis la liste d'élève et l'enregistre dans la structure
 
-void Ecrire_Fichier_Classe(Ecole_t E); // Sauvegarde la structure élève dans un fichier 
-
+void Ecrire_Fichier_Classe(Ecole_t E); // Sauvegarde la structure élève dans un fichier
 
 /******************************Daphne***************************/
 void RechercherEleve(Ecole_t *E);
