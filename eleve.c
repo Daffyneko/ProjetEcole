@@ -74,7 +74,7 @@ void ModifierEleve(Eleve_t *E){
             do{
                 printf("\nVeuillez entrer le sexe de l'eleve (f pour fille ou g pour garçon) : ");
                 fscanf(stdin,"%c", &sexe);
-            }while(sexe!='g' && sexe!='f');
+            }while(sexe!='M' && sexe!='F');
             E->sexe=sexe;
             printf("\n***Modification effectuee***\n");
             break;
