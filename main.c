@@ -34,9 +34,9 @@ int main(){
     do{
         printf("\nQue voulez-vous faire ?");
         printf("\n1 - Tests unitaires");
-        printf("\n2 - Gestion des eleves");
+        printf("\n2 - Gestion de l'ecole");
         printf("\n3 - Gestion des classes");
-        printf("\n4 - Gestion de l'ecole");
+        printf("\n4 - Gestion des eleves");
         printf("\n0 - Quitter\n");
         scanf("%d",&choix);
         getchar();
@@ -49,13 +49,13 @@ int main(){
                 printf("\n\n%d",MonEcole.nbEleveTotal);
                 break;
         case 2 :
-                MenuEleve(&MonEcole);
+                MenuEcole(&MonEcole);
                 break;
         case 3 :
                 MenuClasse(&MonEcole);
                 break;
         case 4 :
-                MenuEcole(&MonEcole);
+                MenuEleve(&MonEcole);
                 break;
         }
     }while(choix!=0);
