@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "ecole.h"
 #include "menu.h"
 
-/***********************************************Daphné***********************************************/
+/***********************************************Daphne***********************************************/
 int main(){
     Ecole_t MonEcole;
     int choix=-1;
-    
+
     /* AUTHENTIFICATION
     char login[30]="admin";
     char mdp[30]="root";
@@ -26,13 +27,16 @@ int main(){
 */
 
     Initialisation(&MonEcole);
+    LireEcole(&MonEcole);
+    LireClasse(&MonEcole);
+    Lire_Fichier_Classe(&MonEcole);
     printf("\n----------Bienvenue sur le logiciel de gestion de l'ecole----------\n");
     do{
         printf("\nQue voulez-vous faire ?");
         printf("\n1 - Tests unitaires");
-        printf("\n2 - Gestion des élèves");
+        printf("\n2 - Gestion des eleves");
         printf("\n3 - Gestion des classes");
-        printf("\n4 - Gestion de l'école");
+        printf("\n4 - Gestion de l'ecole");
         printf("\n0 - Quitter\n");
         scanf("%d",&choix);
         getchar();
@@ -41,7 +45,8 @@ int main(){
         default : return -1;
         case 0 : break;
         case 1 ://Ecrivez ici les fonctions que vous voulez tester
-                AfficherClasse(MonEcole.TabClasse[0]);
+                AfficherEleveTotal(MonEcole);
+                printf("\n\n%d",MonEcole.nbEleveTotal);
                 break;
         case 2 :
                 MenuEleve(&MonEcole);
