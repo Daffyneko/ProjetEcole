@@ -46,7 +46,7 @@ void MenuEleve(Ecole_t *E){
                 AfficherEleveTotal(*E);
                 break;
             case 3 :
-                RechercherEleve(*E);
+                RechercherEleve(E);
                 break;
             case 4 :
                 printf("\n***Suppression d'un eleve***\n");
