@@ -1,17 +1,21 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include <stdlib>
+#include <stdlib.h>
 #include "classe.h"
 
 
 void AfficherClasse (Classe_t C)
-{int i;
-printf("Classe niveau:%s , numero:%d, nom de l'enseignant: %s", C.niveau, C.numClasse, C.nomEnseignant);
-for (i=0; i<25; i++)
-AfficherEleve(C.TabEleve[i]);
+{
+printf("Classe niveau:%s , numero:%d, nom de l'enseignant: %s\n", C.niveau, C.numClasse, C.nomEnseignant);
+}
 
-};
+void AfficherEleveClasse(Classe_t C)
+{
+    int i;
+    for (i=0; i<C.nbEleveClasse; i++)
+        AfficherEleve(C.TabEleve[i]);
+}
 
 
 void SaisirClasse(Classe_t *C)
@@ -31,7 +35,7 @@ void SaisirClasse(Classe_t *C)
     {
         SaisirEleve(&C->TabEleve[i]); // utilisation de la fonction de saisie des élèves
     }
-};
+}
 
 void ModifierClasse(Classe_t *C)
 {
