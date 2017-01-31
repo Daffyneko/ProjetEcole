@@ -88,7 +88,9 @@ void ChoixClasseAfficher(struct Ecole E) // N'affiche les élèves que d'une seu
                                 return;
                             if (choixNum==E.TabClasse[j].numClasse)
                             {
+                                printf("\n");
                                 AfficherClasse (E.TabClasse[j]);
+                                AfficherEleveClasse(E.TabClasse[j]);
                                 return;
                             }
                             if(j==E.nbClasse)
