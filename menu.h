@@ -4,7 +4,7 @@
 #ifndef MENU_H
 #define MENU_H
 #include "ecole.h"
-/***********************************************Daphné***********************************************/
+/***********************************************Daphne***********************************************/
 void MenuEleve(Ecole_t *E);
 void MenuClasse(Ecole_t *E);
 void MenuEcole(Ecole_t *E);
