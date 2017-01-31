@@ -60,10 +60,10 @@ void ChoixClasseAfficher(struct Ecole E) // N'affiche les élèves que d'une seu
     int i, j, resultat; // resultat garde en mémoire la valeur de la comparaison
     int choixNum; // choixNum est le numéro de classe associé au nom que l'utilisateur veut faire afficher
     char poubelle[80];
-
+    AfficherParametreClasse(E);
     do
     {
-        printf("Saisir le nom et le numero de la classe a afficher : ");
+        printf("\nSaisir le nom et le numero de la classe a afficher : ");
         printf("\nNom de la classe (-1 pour annuler): ");
         fgets(choixClasse,sizeof(choixClasse), stdin); // Permet de saisir le nom du directeur
         if (choixClasse[strlen(choixClasse)-1]=='\n') // On regarde si l'avant dernier caractère de la chaine est un retour à la ligne
@@ -90,7 +90,9 @@ void ChoixClasseAfficher(struct Ecole E) // N'affiche les élèves que d'une seu
                             {
                                 printf("\n");
                                 AfficherClasse (E.TabClasse[j]);
+                                printf("--------------------------------------------------------------\n");
                                 AfficherEleveClasse(E.TabClasse[j]);
+                                printf("--------------------------------------------------------------\n");
                                 return;
                             }
                             if(j==E.nbClasse)
