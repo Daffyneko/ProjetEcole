@@ -18,7 +18,7 @@ typedef struct Ecole
     int nbEleveTotal;
     int nbEleveNiveau[5];
     int nbClasse;
-    struct Classe TabClasse[MAXCLASSE];
+    Classe_t TabClasse[MAXCLASSE];
 } Ecole_t;
 
 
