@@ -203,57 +203,8 @@ void Initialisation(struct Ecole *E)
 
 // ----------------------------------------------------------------------------------------------------------------------- //
 
-/***********************************************Daphne***********************************************/
-void RechercherEleve(Ecole_t E){
-    char recherche[MAX];//le mot a rechercher
-    int trouve, modifie;
-    int i, j;
-    printf("\nVeuillez entrer le nom de l'eleve a modifier : ");
-    fscanf(stdin,"%s",recherche);
-    getchar();
-    modifie=0;
-    for(i=0;i<E.nbClasse;i++){
-        for(j=0;j<E.TabClasse[i].nbEleveClasse;j++){
-            trouve=Recherche(E.TabClasse[i].TabEleve[j].nom, recherche);
-            if(trouve==0){
-                ModifierEleve(&E.TabClasse[i].TabEleve[j]);
-                modifie=1;
-            }
-        }
-    }
-    if(modifie!=1){
-        printf("\n***L'eleve n'a pas ete trouve***\n");
-    }
-}
 
-int RechercherClasse(Ecole_t E){
-    char recherche[MAX];//le mot a rechercher
-    int trouve, numero;
-    int i;
-    printf("\nVeuillez entrer le nom de la classe a modifier : ");
-    fscanf(stdin,"%s",recherche);
-    getchar();
-    printf("\nVeuillez entrer le numero de la classe a modifier : ");
-    scanf("%d", &numero);
-    for(i=0;i<E.nbClasse;i++){
-        trouve=Recherche(E.TabClasse[i].niveau, recherche);
-        if(trouve==0 && E.TabClasse[i].numClasse==numero){
-            return i;
-            }
-    }
-    printf("\n***La classe n'a pas ete trouvee***\n");
-    return -1;
-}
-
-void AjouterClasse(Ecole_t *E, int position){
-    SaisirClasse(&E->TabClasse[position]);
-    E->nbClasse+=1;
-}
-
-void SupprimerEleve(Ecole_t *E){
-    char recherche[MAX];//le mot a rechercher
-    char choixsup;
-/***********************************************Daphne***********************************************/
+ /***********************************************Daphne***********************************************/
 void RechercherEleve(Ecole_t E){
     char recherche[MAX];//le mot a rechercher
     int trouve, modifie;
