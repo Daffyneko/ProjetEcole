@@ -24,6 +24,8 @@ void AfficherClasse(Classe_t C);
 
 void ModifierClasse(Classe_t *C);
 
+void AfficherEleveClasse(Classe_t C);
+
 /*LISTE CHAINEES*/
 
 /*******************************Daphne*******************************/
