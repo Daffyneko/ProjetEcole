@@ -29,6 +29,7 @@ void MenuEleve(Ecole_t *E){
                 if(E->TabClasse[i].nbEleveClasse<25){
                         AffecterEleve(eleve, &E->TabClasse[i]);
                         E->nbEleveTotal++;
+                        E->TabClasse[i].nbEleveClasse++;
                         EcrireEcole(*E);
                         EcrireClasse(*E);
                         Ecrire_Fichier_Classe(*E);
@@ -40,6 +41,7 @@ void MenuEleve(Ecole_t *E){
                                 AjouterClasse(E, E->nbClasse);
                                 AffecterEleve(eleve, &E->TabClasse[i]);
                                 E->nbEleveTotal++;
+                                E->TabClasse[i].nbEleveClasse++;
                                 EcrireEcole(*E);
                                 EcrireClasse(*E);
                                 Ecrire_Fichier_Classe(*E);
