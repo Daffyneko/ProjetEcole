@@ -7,7 +7,19 @@
 
 void AfficherClasse (Classe_t C)
 {
-printf("Classe niveau:%s , numero:%d, nom de l'enseignant: %s\n", C.niveau, C.numClasse, C.nomEnseignant);
+    int i, longueur;
+
+    longueur=strlen(C.niveau);
+    printf("\t%s",C.niveau);
+    for(i=0;i<(5-longueur);i++){
+        printf(" ");
+    }
+
+    printf("%d",C.numClasse);
+    for(i=0;i<3;i++){
+        printf(" ");
+    }
+    printf("%s   \n",C.nomEnseignant);
 }
 
 void AfficherEleveClasse(Classe_t C)
