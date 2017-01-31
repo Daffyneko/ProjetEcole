@@ -99,12 +99,12 @@ void MenuClasse(Ecole_t *E){
                 ChoixClasseAfficher(*E);
                 break;
                 case 4 :
-                printf("\n\n*****Affichage de toutes les classes*****\n");
+                printf("\n\n*****Affichage de toutes les classes*****\n\n");
                 for(i=0;i<E->nbClasse;i++){
                         AfficherClasse(E->TabClasse[i]);
-                        printf("\n-----------------------------------------------------------\n");
+                        printf(" -------------------------------------------------------------\n");
                         AfficherEleveClasse(E->TabClasse[i]);
-                        printf("\n-----------------------------------------------------------\n");
+                        printf(" -------------------------------------------------------------\n\n");
                 }
                 break;
         }
