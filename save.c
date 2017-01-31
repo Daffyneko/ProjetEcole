@@ -62,7 +62,7 @@ void LireEcole(struct Ecole *E) // Sauvegarde l'école sur un fichier csv
     fclose(ptr_sauvegarde);
 }
 
-void EcireClasse(struct Ecole E) // Télécharge les classes depuis un fichier csv
+void EcrireClasse(struct Ecole E) // Télécharge les classes depuis un fichier csv
 {
     int i;
     FILE *ptr_sauvegarde;
